@@ -3,8 +3,8 @@ import { useMemo, useState } from 'react';
 import {
   CardIconName,
   IconCardAnimationType,
-} from '../../../components/icon-card/icon-card.types';
-import { IconCard } from '../../../components/icon-card/icon-card.component';
+} from '../../../../components/icon-card/icon-card.types';
+import { IconCard } from '../../../../components/icon-card/icon-card.component';
 
 import { GuessCardState } from './guess-card.types';
 import { getCardColorFromState } from './guess-card.utils';
