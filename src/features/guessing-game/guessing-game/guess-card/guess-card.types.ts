@@ -3,5 +3,5 @@ export enum GuessCardState {
   PICKED = 'picked',
   GUESSED = 'guessed',
   GUESSED_WRONG = 'guessed_wrong',
-  OPENED = 'opened',
+  SOLVED = 'solved',
 }

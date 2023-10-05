@@ -17,8 +17,8 @@ export const GuessCard = () => {
       [GuessCardState.CLOSED]: GuessCardState.PICKED,
       [GuessCardState.PICKED]: GuessCardState.GUESSED,
       [GuessCardState.GUESSED]: GuessCardState.GUESSED_WRONG,
-      [GuessCardState.GUESSED_WRONG]: GuessCardState.OPENED,
-      [GuessCardState.OPENED]: GuessCardState.CLOSED,
+      [GuessCardState.GUESSED_WRONG]: GuessCardState.SOLVED,
+      [GuessCardState.SOLVED]: GuessCardState.CLOSED,
     };
 
     const nextState = nextStateConverter[cardState];

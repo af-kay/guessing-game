@@ -6,7 +6,7 @@ export const getCardColorFromState = (state: GuessCardState): string => {
     [GuessCardState.PICKED]: 'lightblue',
     [GuessCardState.GUESSED]: 'lightgreen',
     [GuessCardState.GUESSED_WRONG]: 'indianred',
-    [GuessCardState.OPENED]: 'white',
+    [GuessCardState.SOLVED]: 'white',
   };
 
   return converter[state];
