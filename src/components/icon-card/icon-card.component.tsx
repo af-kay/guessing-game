@@ -1,47 +1,51 @@
 import styled, { css } from 'styled-components';
 
-import { CardState, IIconCard } from './icon-card.types';
-import {
-  createClosedIcon,
-  createFaIcon,
-  getIconStateColor,
-} from './icon-card.utils';
+import { IIconCard } from './icon-card.types';
+import { createClosedIcon, createFaIcon } from './icon-card.utils';
 
-export const IconCard: React.FC<IIconCard> = ({ icon, state, onClick }) => {
+export const IconCard: React.FC<IIconCard> = ({
+  iconName: icon,
+  isClosed,
+  animation,
+  bgColor,
+  iconColor,
+  onClick,
+}) => {
   const FaIcon = createFaIcon(icon);
   const ClosedIcon = createClosedIcon();
 
   return (
-    <CardLayout state={state} onClick={onClick}>
-      <CardInner state={state}>
-        <CardFrontSide state={state}>
-          <FaIcon size={80} color="black" />
+    <CardLayout onClick={onClick}>
+      <CardInner isClosed={isClosed}>
+        <CardFrontSide bgColor={bgColor}>
+          <AnimationWrapper animation={animation}>
+            <FaIcon size={70} color={iconColor} />
+          </AnimationWrapper>
         </CardFrontSide>
-        <CardBackSide state={state}>
-          <ClosedIcon size={80} color="black" />
+        <CardBackSide bgColor={bgColor}>
+          <ClosedIcon size={70} color={iconColor} />
         </CardBackSide>
       </CardInner>
     </CardLayout>
   );
 };
 
-const CardLayout = styled.div<{ state: CardState }>`
+const CardLayout = styled.div`
   min-width: 86px;
   min-height: 86px;
   border-radius: 8px;
-  outline: 1px solid red;
-  // padding: 24px;
+  padding: 6px;
   cursor: pointer;
   background: transparent;
 `;
 
-const CardInner = styled.div<{ state: CardState }>`
+const CardInner = styled.div<Pick<IIconCard, 'isClosed'>>`
   position: relative;
   width: 100%;
   height: 100%;
 
   ${p =>
-    p.state === CardState.CLOSED &&
+    p.isClosed &&
     css`
       transform: rotateY(180deg);
     `}
@@ -50,63 +54,68 @@ const CardInner = styled.div<{ state: CardState }>`
   transform-style: preserve-3d;
 `;
 
-const CardSide = styled(CardLayout)`
-  position: absolute;
-  backface-visibility: hidden;
-
+const AnimationWrapper = styled.span<Pick<IIconCard, 'animation'>>`
+  ${p =>
+    p.animation === 'shake' &&
+    css`
+      animation: shake 0.2s;
+    `}
+  ${p =>
+    p.animation === 'infinite-shake' &&
+    css`
+      animation: infinite shake 0.5s;
+    `}
+  
   @keyframes shake {
     0% {
-      transform: translate(1px, 1px) rotate(0deg);
+      transform: translate(1px, 1px);
     }
     10% {
-      transform: translate(-1px, -2px) rotate(-1deg);
+      transform: translate(-1px, -2px);
     }
     20% {
-      transform: translate(-3px, 0px) rotate(1deg);
+      transform: translate(-3px, 0px);
     }
     30% {
-      transform: translate(3px, 2px) rotate(0deg);
+      transform: translate(3px, 2px);
     }
     40% {
-      transform: translate(1px, -1px) rotate(1deg);
+      transform: translate(1px, -1px);
     }
     50% {
-      transform: translate(-1px, 2px) rotate(-1deg);
+      transform: translate(-1px, 2px);
     }
     60% {
-      transform: translate(-3px, 1px) rotate(0deg);
+      transform: translate(-3px, 1px);
     }
     70% {
-      transform: translate(3px, 1px) rotate(-1deg);
+      transform: translate(3px, 1px);
     }
     80% {
-      transform: translate(-1px, -1px) rotate(1deg);
+      transform: translate(-1px, -1px);
     }
     90% {
-      transform: translate(1px, 2px) rotate(0deg);
+      transform: translate(1px, 2px);
     }
     100% {
-      transform: translate(1px, -2px) rotate(-1deg);
+      transform: translate(1px, -2px);
     }
   }
 `;
 
-const CardFrontSide = styled(CardSide)`
-  background: ${p => getIconStateColor(p.state)};
+const CardSide = styled(CardLayout)<Pick<IIconCard, 'bgColor'>>`
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid #ffffff22;
 
-  ${p =>
-    p.state === CardState.GUESSED_WRONG &&
-    css`
-      animation: infinite shake 0.5s;
-    `}
-  ${p =>
-    p.state === CardState.GUESSED &&
-    css`
-      animation: shake 0.2s;
-    `}
+  background: ${p => p.bgColor};
 `;
 
-const CardBackSide = styled(CardSide)`
-  background: ${p => getIconStateColor(p.state)};
+const CardFrontSide = styled(CardSide)``;
+
+const CardBackSide = styled(CardSide)<Pick<IIconCard, 'bgColor'>>`
   transform: rotateY(180deg);
 `;

@@ -1,12 +1,4 @@
-export enum CardState {
-  CLOSED = 'closed',
-  PICKED = 'picked',
-  GUESSED = 'guessed',
-  GUESSED_WRONG = 'guessed_wrong',
-  OPENED = 'opened',
-}
-
-export enum CardIcon {
+export enum CardIconName {
   FB = 'facebook',
   DOCKER = 'docker',
   REACT = 'react',
@@ -17,8 +9,13 @@ export enum CardIcon {
   LINUX = 'linux',
 }
 
+export type IconCardAnimationType = 'shake' | 'infinite-shake';
+
 export type IIconCard = {
-  icon: CardIcon;
-  state: CardState;
+  iconName: CardIconName;
+  isClosed: boolean;
+  animation?: IconCardAnimationType;
+  bgColor: string;
+  iconColor: string;
   onClick: () => void;
 };
