@@ -1,7 +1,7 @@
 import { CardIconName } from '../../../components/icon-card/icon-card.types';
 
 export const GUESSING_GAME_CONFIG = {
-  cardsForSingleIcon: 2, // or for one guess
+  cardsForSingleGuess: 2,
   cardsAmount: 16,
   autoSolveLastGuess: true,
   wrongGuessDisplayMs: 700, // in ms

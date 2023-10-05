@@ -18,8 +18,10 @@ export const useGuessingGameProvider = (): GuessingGameSession => {
     makeGuessingGameCards(),
   );
 
-  const findGameCardById = (id: GuessCardData['id']) =>
-    gameCards.find(c => c.id === id)!;
+  const findGameCardById = useCallback(
+    (id: GuessCardData['id']) => gameCards.find(c => c.id === id)!,
+    [gameCards],
+  );
 
   const updateCard = useCallback((updatedCard: GuessCardData) => {
     setGameCards(prev =>
@@ -39,29 +41,40 @@ export const useGuessingGameProvider = (): GuessingGameSession => {
     [gameCards],
   );
 
-  const pickCard = (id: GuessCardData['id']) => {
-    if (pickedCards.length === GUESSING_GAME_CONFIG.cardsForSingleIcon) {
-      return; // Unable to pick because of already picked enough
+  const pickCard = useCallback(
+    (id: GuessCardData['id']) => {
+      const card = findGameCardById(id);
+
+      const isEnoughPickedAlready = Boolean(
+        pickedCards.length === GUESSING_GAME_CONFIG.cardsForSingleGuess,
+      );
+      const isCardPickable = card.state === GuessCardState.CLOSED;
+
+      if (isCardPickable && !isEnoughPickedAlready) {
+        updateCard({
+          ...card,
+          state: GuessCardState.PICKED,
+        });
+      }
+    },
+    [pickedCards, updateCard, findGameCardById],
+  );
+
+  const startGame = useCallback(() => {
+    const statesToStartGameFrom = [
+      GuessingGameSessionState.DONE,
+      GuessingGameSessionState.NOT_STARTED,
+    ];
+
+    if (statesToStartGameFrom.includes(gameState)) {
+      setGameState(GuessingGameSessionState.IN_PROGRESS);
     }
+  }, [gameState]);
 
-    const card = findGameCardById(id);
-    if (card.state !== GuessCardState.CLOSED) {
-      return; // Can pick card only if closed
-    }
-
-    updateCard({
-      ...card,
-      state: GuessCardState.PICKED,
-    });
-  };
-
-  const startGame = () => {
-    setGameState(GuessingGameSessionState.IN_PROGRESS);
-  };
-
+  // Check and make guess if picked enough
   useEffect(() => {
     const isEnoughToMakeGuess =
-      pickedCards.length === GUESSING_GAME_CONFIG.cardsForSingleIcon;
+      pickedCards.length === GUESSING_GAME_CONFIG.cardsForSingleGuess;
 
     if (isEnoughToMakeGuess) {
       const isGuessedRight = pickedCards.every(
@@ -97,7 +110,7 @@ export const useGuessingGameProvider = (): GuessingGameSession => {
   useEffect(() => {
     if (GUESSING_GAME_CONFIG.autoSolveLastGuess) {
       const isOnlyLastGuessLeft =
-        nonGuessedCards.length === GUESSING_GAME_CONFIG.cardsForSingleIcon;
+        nonGuessedCards.length === GUESSING_GAME_CONFIG.cardsForSingleGuess;
 
       if (isOnlyLastGuessLeft) {
         nonGuessedCards.forEach(card => {

@@ -4,10 +4,10 @@ import { GuessCardData } from './guessing-game.types';
 
 const isValidCardsAmount = () => {
   const isEnoughToMakeOnePair =
-    GUESSING_GAME_CONFIG.cardsAmount >= GUESSING_GAME_CONFIG.cardsForSingleIcon;
+    GUESSING_GAME_CONFIG.cardsAmount >= GUESSING_GAME_CONFIG.cardsForSingleGuess;
   const isPairAmount =
     GUESSING_GAME_CONFIG.cardsAmount %
-      GUESSING_GAME_CONFIG.cardsForSingleIcon ===
+      GUESSING_GAME_CONFIG.cardsForSingleGuess ===
     0;
 
   return isEnoughToMakeOnePair && isPairAmount;
@@ -17,7 +17,7 @@ const isEnoughIconsForGame = () =>
   Boolean(
     GUESSING_GAME_CONFIG.iconsToChooseFrom.length >=
       GUESSING_GAME_CONFIG.cardsAmount /
-        GUESSING_GAME_CONFIG.cardsForSingleIcon,
+        GUESSING_GAME_CONFIG.cardsForSingleGuess,
   );
 
 // NOTE: Modifies input array. Returns undefined if no elements in array
@@ -60,7 +60,7 @@ export const makeGuessingGameCards = (): GuessCardData[] => {
   while (slotsLeft) {
     const randomIcon = popRandomFromArray(iconsHeap);
     const indexesToInsert = Array.from({
-      length: GUESSING_GAME_CONFIG.cardsForSingleIcon,
+      length: GUESSING_GAME_CONFIG.cardsForSingleGuess,
     }).map(() => popRandomFromArray(freeCardSlotIndexes));
 
     indexesToInsert.forEach(index => {
@@ -73,7 +73,7 @@ export const makeGuessingGameCards = (): GuessCardData[] => {
       cardsData[index!] = card;
     });
 
-    slotsLeft -= GUESSING_GAME_CONFIG.cardsForSingleIcon;
+    slotsLeft -= GUESSING_GAME_CONFIG.cardsForSingleGuess;
   }
 
   return cardsData.filter(isNonNullable);
