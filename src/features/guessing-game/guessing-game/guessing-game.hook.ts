@@ -34,6 +34,11 @@ export const useGuessingGameProvider = (): GuessingGameSession => {
     [gameCards],
   );
 
+  const nonGuessedCards = useMemo(
+    () => gameCards.filter(c => c.state !== GuessCardState.GUESSED),
+    [gameCards],
+  );
+
   const pickCard = (id: GuessCardData['id']) => {
     if (pickedCards.length === GUESSING_GAME_CONFIG.cardsForSingleIcon) {
       return; // Unable to pick because of already picked enough
@@ -88,6 +93,22 @@ export const useGuessingGameProvider = (): GuessingGameSession => {
       }
     }
   }, [pickedCards, updateCard]);
+
+  useEffect(() => {
+    if (GUESSING_GAME_CONFIG.autoSolveLastGuess) {
+      const isOnlyLastGuessLeft =
+        nonGuessedCards.length === GUESSING_GAME_CONFIG.cardsForSingleIcon;
+
+      if (isOnlyLastGuessLeft) {
+        nonGuessedCards.forEach(card => {
+          updateCard({
+            ...card,
+            state: GuessCardState.GUESSED,
+          });
+        });
+      }
+    }
+  }, [nonGuessedCards]);
 
   return {
     gameState,
