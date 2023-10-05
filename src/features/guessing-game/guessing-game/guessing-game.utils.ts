@@ -3,16 +3,21 @@ import { GUESSING_GAME_CONFIG } from './guessing-game.config';
 import { GuessCardData } from './guessing-game.types';
 
 const isValidCardsAmount = () => {
-  const isEnoughToMakeOnePair = GUESSING_GAME_CONFIG.cardsAmount >= GUESSING_GAME_CONFIG.cardsForSingleIcon;
-  const isPairAmount = GUESSING_GAME_CONFIG.cardsAmount % GUESSING_GAME_CONFIG.cardsForSingleIcon === 0;
+  const isEnoughToMakeOnePair =
+    GUESSING_GAME_CONFIG.cardsAmount >= GUESSING_GAME_CONFIG.cardsForSingleIcon;
+  const isPairAmount =
+    GUESSING_GAME_CONFIG.cardsAmount %
+      GUESSING_GAME_CONFIG.cardsForSingleIcon ===
+    0;
 
   return isEnoughToMakeOnePair && isPairAmount;
 };
 
 const isEnoughIconsForGame = () =>
   Boolean(
-    GUESSING_GAME_CONFIG.cardsAmount / GUESSING_GAME_CONFIG.cardsForSingleIcon >=
-      GUESSING_GAME_CONFIG.iconsToChooseFrom.length,
+    GUESSING_GAME_CONFIG.iconsToChooseFrom.length >=
+      GUESSING_GAME_CONFIG.cardsAmount /
+        GUESSING_GAME_CONFIG.cardsForSingleIcon,
   );
 
 // NOTE: Modifies input array. Returns undefined if no elements in array
@@ -45,9 +50,9 @@ export const makeGuessingGameCards = (): GuessCardData[] => {
   const cardsData: Array<null | GuessCardData> = Array.from({
     length: GUESSING_GAME_CONFIG.cardsAmount,
   }).map(() => null);
-  const freeCardSlotIndexes = Array.from({ length: GUESSING_GAME_CONFIG.cardsAmount }).map(
-    (_, index) => index,
-  );
+  const freeCardSlotIndexes = Array.from({
+    length: GUESSING_GAME_CONFIG.cardsAmount,
+  }).map((_, index) => index);
 
   let slotsLeft = freeCardSlotIndexes.length;
   let nextIconId = 1;

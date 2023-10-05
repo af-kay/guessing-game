@@ -5,13 +5,13 @@ import { getCardColorFromState } from './guess-card.utils';
 import { useGuessCard } from './guess-card.hook';
 
 export const GuessCard: React.FC<IIGuessCard> = ({ id }) => {
-  const { icon, state, handleClick, isCardClosed, cardAnimation } =
+  const { icon, state, pickCard, isCardClosed, cardAnimation } =
     useGuessCard(id);
 
   return (
     <IconCard
       iconName={icon}
-      onClick={handleClick}
+      onClick={pickCard}
       isClosed={isCardClosed}
       bgColor={getCardColorFromState(state)}
       animation={cardAnimation}

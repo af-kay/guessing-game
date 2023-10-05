@@ -1,9 +1,9 @@
 import { Board } from '../../../components/board/board.component';
 import { GuessCard } from './guess-card/guess-card.component';
-import { useGuessingGame } from './guessing-game.hook';
+import { useGuessingGameProvider } from './guessing-game.hook';
 
 export const Game = () => {
-  const { gameCards } = useGuessingGame();
+  const { gameCards } = useGuessingGameProvider();
 
   return (
     <Board>
