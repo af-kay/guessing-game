@@ -1,50 +1,19 @@
-import { useMemo, useState } from 'react';
-
-import {
-  CardIconName,
-  IconCardAnimationType,
-} from '../../../../components/icon-card/icon-card.types';
 import { IconCard } from '../../../../components/icon-card/icon-card.component';
 
-import { GuessCardState } from './guess-card.types';
+import { IIGuessCard } from './guess-card.types';
 import { getCardColorFromState } from './guess-card.utils';
+import { useGuessCard } from './guess-card.hook';
 
-export const GuessCard = () => {
-  const [cardState, setCardState] = useState(GuessCardState.CLOSED);
-
-  const handleClick = () => {
-    const nextStateConverter: Record<GuessCardState, GuessCardState> = {
-      [GuessCardState.CLOSED]: GuessCardState.PICKED,
-      [GuessCardState.PICKED]: GuessCardState.GUESSED,
-      [GuessCardState.GUESSED]: GuessCardState.GUESSED_WRONG,
-      [GuessCardState.GUESSED_WRONG]: GuessCardState.SOLVED,
-      [GuessCardState.SOLVED]: GuessCardState.CLOSED,
-    };
-
-    const nextState = nextStateConverter[cardState];
-
-    setCardState(nextState);
-  };
-
-  const isCardClosed = cardState === GuessCardState.CLOSED;
-
-  const cardAnimation: undefined | IconCardAnimationType = useMemo(() => {
-    switch (cardState) {
-      case GuessCardState.GUESSED:
-        return 'shake';
-      case GuessCardState.GUESSED_WRONG:
-        return 'infinite-shake';
-      default:
-        return undefined;
-    }
-  }, [cardState]);
+export const GuessCard: React.FC<IIGuessCard> = ({ id }) => {
+  const { icon, state, handleClick, isCardClosed, cardAnimation } =
+    useGuessCard(id);
 
   return (
     <IconCard
-      iconName={CardIconName.LINUX}
+      iconName={icon}
       onClick={handleClick}
       isClosed={isCardClosed}
-      bgColor={getCardColorFromState(cardState)}
+      bgColor={getCardColorFromState(state)}
       animation={cardAnimation}
       iconColor={'black'}
     />

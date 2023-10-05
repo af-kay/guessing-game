@@ -1,3 +1,5 @@
+import { GuessCardData } from '../guessing-game.types';
+
 export enum GuessCardState {
   CLOSED = 'closed',
   PICKED = 'picked',
@@ -5,3 +7,7 @@ export enum GuessCardState {
   GUESSED_WRONG = 'guessed_wrong',
   SOLVED = 'solved',
 }
+
+export type IIGuessCard = {
+  id: GuessCardData['id'];
+};

@@ -1,19 +1,16 @@
 import React, { useContext } from 'react';
 
-type GuessingGameContextType = {};
+import { GuessingGameSession } from './guessing-game.types';
+import { useGuessingGame } from './guessing-game.hook';
 
-const GuessingGameContext = React.createContext({} as GuessingGameContextType);
+const GuessingGameContext = React.createContext({} as GuessingGameSession);
 
 export const GuessingGameContextProvider: React.FC<React.PropsWithChildren> = ({
   children,
-}) => {
-  // TODO: states
-
-  return (
-    <GuessingGameContext.Provider value={{}}>
-      {children}
-    </GuessingGameContext.Provider>
-  );
-};
+}) => (
+  <GuessingGameContext.Provider value={useGuessingGame()}>
+    {children}
+  </GuessingGameContext.Provider>
+);
 
 export const useGuessingGameContext = () => useContext(GuessingGameContext);
