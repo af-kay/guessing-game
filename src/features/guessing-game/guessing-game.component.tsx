@@ -1,9 +1,17 @@
-import { Board } from '../../../components/board/board.component';
+import { Board } from '../../components/board/board.component';
+
 import { useGuessingGameLogic } from './game-logic/game-logic.hook';
 import { GuessCard } from './guess-card/guess-card.component';
+import { GuessingGameContextProvider } from './guessing-game.context';
 import { useGuessingGame } from './guessing-game.hook';
 
-export const Game = () => {
+export const GuessingGame = () => (
+  <GuessingGameContextProvider>
+    <Game />
+  </GuessingGameContextProvider>
+);
+
+const Game = () => {
   const { gameCards } = useGuessingGame();
 
   useGuessingGameLogic();

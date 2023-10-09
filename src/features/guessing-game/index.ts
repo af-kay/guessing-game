@@ -1,1 +1,3 @@
-export { GuessingGameWrapper as GuessingGame } from './guessing-game-wrapper.component';
+export { GuessingGame } from './guessing-game.component';
+
+export { GuessingGameContextProvider } from './guessing-game.context';

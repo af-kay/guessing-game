@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { GuessCardData } from '../guessing-game.types';
-import { GuessCardState } from '../guess-card/guess-card.types';
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
+import { GuessCardState } from '../guess-card/guess-card.types';
 
 export const useGameCards = (generateCardsFn: () => GuessCardData[]) => {
   const [gameCards, setGameCards] = useState(generateCardsFn);

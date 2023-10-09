@@ -1,4 +1,4 @@
-import { CardIconName } from '../../../components/icon-card/icon-card.types';
+import { CardIconName } from '../../components/icon-card/icon-card.types';
 
 export const GUESSING_GAME_CONFIG = {
   cardsForSingleGuess: 2,

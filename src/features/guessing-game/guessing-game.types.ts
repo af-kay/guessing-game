@@ -1,4 +1,4 @@
-import { CardIconName } from '../../../components/icon-card/icon-card.types';
+import { CardIconName } from '../../components/icon-card/icon-card.types';
 import { GuessCardState } from './guess-card/guess-card.types';
 
 export enum GuessingGameSessionState {
