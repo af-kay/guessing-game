@@ -4,7 +4,7 @@ import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 import { useGuessingGame } from '../guessing-game.hook';
 import { GuessCardState } from '../guess-card/guess-card.types';
 
-export const useGuessingGameLogic = () => {
+export const useGameLogic = () => {
   useGuessLogic__SideEffect();
   useAutoSolveLogic__SideEffect();
 };
