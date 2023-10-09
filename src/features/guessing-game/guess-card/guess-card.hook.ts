@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
-import { IconCardAnimationType } from '../../../components/icon-card/icon-card.types';
+
+import { IconCardAnimationType } from '../../../components/icon-card';
+
 import { GuessCardData } from '../guessing-game.types';
 import { GuessCardState } from './guess-card.types';
 import { useGuessingGame } from '../guessing-game.hook';

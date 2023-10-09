@@ -1,4 +1,4 @@
-import { Board } from '../../components/board/board.component';
+import { Board } from '../../components/board';
 
 import { useGameLogic } from './game-logic';
 import { GuessCard } from './guess-card';

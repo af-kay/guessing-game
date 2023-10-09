@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-import { IBoard } from './board.types';
-
-export const Board: React.FC<IBoard> = ({ children }) => {
+export const Board = ({ children }: Required<React.PropsWithChildren>) => {
   return <Layout>{children}</Layout>;
 };
 

@@ -1,4 +1,4 @@
-import { IconCard } from '../../../components/icon-card/icon-card.component';
+import { IconCard } from '../../../components/icon-card';
 
 import { IIGuessCard } from './guess-card.types';
 import { getCardColorFromState } from './guess-card.utils';
