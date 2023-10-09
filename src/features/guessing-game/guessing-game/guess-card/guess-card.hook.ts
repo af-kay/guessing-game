@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { IconCardAnimationType } from '../../../../components/icon-card/icon-card.types';
 import { GuessCardData } from '../guessing-game.types';
 import { GuessCardState } from './guess-card.types';
-import { useGuessingGame, useGuessingGameCard } from '../guessing-game.context';
+import { useGuessingGame } from '../guessing-game.hook';
 
 const getCardAnimation = (
   state: GuessCardState,
@@ -15,6 +15,12 @@ const getCardAnimation = (
     default:
       return undefined;
   }
+};
+
+const useGuessingGameCard = (id: GuessCardData['id']) => {
+  const { gameCards } = useGuessingGame();
+
+  return gameCards.find(c => c.id === id)!;
 };
 
 export const useGuessCard = (id: GuessCardData['id']) => {

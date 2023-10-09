@@ -1,23 +1,39 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { GuessCardData, GuessingGameSession } from './guessing-game.types';
-import { useGuessingGameProvider } from './guessing-game.hook';
+import {
+  GuessingGameSession,
+  GuessingGameSessionState,
+} from './guessing-game.types';
+import { makeGuessingGameCards } from './guessing-game.utils';
+import { useGameCards } from './game-cards';
+import { useGameState } from './game-state';
 
-const GuessingGameContext = React.createContext({} as GuessingGameSession);
+export const GuessingGameContext = React.createContext(
+  {} as GuessingGameSession,
+);
 
 export const GuessingGameContextProvider: React.FC<React.PropsWithChildren> = ({
   children,
-}) => (
-  <GuessingGameContext.Provider value={useGuessingGameProvider()}>
-    {children}
-  </GuessingGameContext.Provider>
-);
+}) => {
+  const { gameState, startGame } = useGameState(
+    GuessingGameSessionState.IN_PROGRESS,
+  );
+  const { cards, pickedCards, nonGuessedCards, updateCard, pickCard } =
+    useGameCards(makeGuessingGameCards);
 
-export const useGuessingGame = () => useContext(GuessingGameContext);
-
-// TODO: move out of context
-export const useGuessingGameCard = (id: GuessCardData['id']) => {
-  const { gameCards } = useGuessingGame();
-
-  return gameCards.find(c => c.id === id)!;
+  return (
+    <GuessingGameContext.Provider
+      value={{
+        gameCards: cards,
+        gameState,
+        startGame,
+        pickedCards,
+        nonGuessedCards,
+        updateCard,
+        pickCardById: pickCard,
+      }}
+    >
+      {children}
+    </GuessingGameContext.Provider>
+  );
 };

@@ -17,6 +17,9 @@ export type GuessCardData = {
 export type GuessingGameSession = {
   gameState: GuessingGameSessionState;
   gameCards: GuessCardData[];
+  pickedCards: GuessCardData[];
+  nonGuessedCards: GuessCardData[];
+  updateCard: (card: GuessCardData) => void;
   startGame: () => void;
   pickCardById: (id: GuessCardData['id']) => void;
 };
