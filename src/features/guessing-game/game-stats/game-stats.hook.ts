@@ -1,9 +1,26 @@
+import { useState } from 'react';
 import { IUseGameStats } from './game-stats.types';
+import { useGameEvents } from '../game-events';
 
 export const useGameStats: IUseGameStats = () => {
+  const [guessesMade, setGuessesMade] = useState(0);
+  const [wrongGuesses, setWrongGuesses] = useState(0);
+  const [successfulGuesses, setSuccessfulGuesses] = useState(0);
+
+  useGameEvents({
+    onGuessed: isRight => {
+      setGuessesMade(prev => prev + 1);
+      if (!isRight) {
+        setWrongGuesses(prev => prev + 1);
+      } else {
+        setSuccessfulGuesses(prev => prev + 1);
+      }
+    },
+  });
 
   return {
-    guessesMade: 0,
-    wrongGuesses: 0,
+    guessesMade,
+    wrongGuesses,
+    successfulGuesses,
   };
 };
