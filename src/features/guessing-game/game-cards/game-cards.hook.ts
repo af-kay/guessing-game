@@ -4,7 +4,9 @@ import { GuessCardData } from '../guessing-game.types';
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 import { GuessCardState } from '../guess-card/guess-card.types';
 
-export const useGameCards = (generateCardsFn: () => GuessCardData[]) => {
+import type { IUseGameCards } from './game-cards.types';
+
+export const useGameCards: IUseGameCards = generateCardsFn => {
   const [gameCards, setGameCards] = useState(generateCardsFn);
 
   const findGameCardById = useCallback(
@@ -50,7 +52,7 @@ export const useGameCards = (generateCardsFn: () => GuessCardData[]) => {
   );
 
   return {
-    cards: gameCards,
+    allCards: gameCards,
     pickCard,
     pickedCards,
     nonGuessedCards,

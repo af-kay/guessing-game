@@ -1,4 +1,6 @@
 import { CardIconName } from '../../components/icon-card';
+import { IUseGameCards } from './game-cards';
+import { IUseGameState } from './game-state';
 
 import { GuessCardState } from './guess-card/guess-card.types';
 
@@ -16,11 +18,6 @@ export type GuessCardData = {
 };
 
 export type GuessingGameSession = {
-  gameState: GuessingGameSessionState;
-  gameCards: GuessCardData[];
-  pickedCards: GuessCardData[];
-  nonGuessedCards: GuessCardData[];
-  updateCard: (card: GuessCardData) => void;
-  startGame: () => void;
-  pickCardById: (id: GuessCardData['id']) => void;
+  state: ReturnType<IUseGameState>;
+  cards: ReturnType<IUseGameCards>;
 };

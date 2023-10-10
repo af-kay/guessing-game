@@ -20,16 +20,19 @@ const getCardAnimation = (
 };
 
 const useGuessingGameCard = (id: GuessCardData['id']) => {
-  const { gameCards } = useGuessingGame();
+  const {
+    cards: { allCards },
+  } = useGuessingGame();
 
-  return gameCards.find(c => c.id === id)!;
+  return allCards.find(c => c.id === id)!;
 };
 
 export const useGuessCard = (id: GuessCardData['id']) => {
-  const { pickCardById } = useGuessingGame();
+  const {
+    cards: { pickCard },
+  } = useGuessingGame();
   const card = useGuessingGameCard(id);
 
-  const pickCard = () => pickCardById(id);
   const isCardClosed = card.state === GuessCardState.CLOSED;
 
   const cardAnimation: undefined | IconCardAnimationType = useMemo(
@@ -38,10 +41,10 @@ export const useGuessCard = (id: GuessCardData['id']) => {
   );
 
   return {
+    pickCard: () => pickCard(card.id),
     icon: card.icon,
     state: card.state,
     isCardClosed,
-    pickCard,
     cardAnimation,
   };
 };

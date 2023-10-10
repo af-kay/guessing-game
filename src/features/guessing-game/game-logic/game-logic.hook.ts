@@ -10,7 +10,9 @@ export const useGameLogic = () => {
 };
 
 const useGuessLogic__SideEffect = () => {
-  const { pickedCards, updateCard } = useGuessingGame();
+  const {
+    cards: { pickedCards, updateCard },
+  } = useGuessingGame();
 
   useEffect(() => {
     const isEnoughToMakeGuess =
@@ -49,7 +51,9 @@ const useGuessLogic__SideEffect = () => {
 };
 
 const useAutoSolveLogic__SideEffect = () => {
-  const { nonGuessedCards, updateCard } = useGuessingGame();
+  const {
+    cards: { nonGuessedCards, updateCard },
+  } = useGuessingGame();
 
   useEffect(() => {
     if (GUESSING_GAME_CONFIG.autoSolveLastGuess) {

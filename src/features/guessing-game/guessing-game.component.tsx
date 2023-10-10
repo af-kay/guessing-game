@@ -13,13 +13,15 @@ export const GuessingGame = () => (
 );
 
 const Game = () => {
-  const { gameCards } = useGuessingGame();
+  const {
+    cards: { allCards },
+  } = useGuessingGame();
 
   useGameLogic();
 
   return (
     <Board>
-      {gameCards.map(card => (
+      {allCards.map(card => (
         <GuessCard key={card.id} id={card.id} />
       ))}
     </Board>

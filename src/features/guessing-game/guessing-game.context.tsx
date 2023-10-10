@@ -15,22 +15,14 @@ export const GuessingGameContext = React.createContext(
 export const GuessingGameContextProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const { gameState, startGame } = useGameState(
-    GuessingGameSessionState.IN_PROGRESS,
-  );
-  const { cards, pickedCards, nonGuessedCards, updateCard, pickCard } =
-    useGameCards(makeGuessingGameCards);
+  const gameState = useGameState(GuessingGameSessionState.IN_PROGRESS);
+  const gameCards = useGameCards(makeGuessingGameCards);
 
   return (
     <GuessingGameContext.Provider
       value={{
-        gameCards: cards,
-        gameState,
-        startGame,
-        pickedCards,
-        nonGuessedCards,
-        updateCard,
-        pickCardById: pickCard,
+        state: gameState,
+        cards: gameCards,
       }}
     >
       {children}

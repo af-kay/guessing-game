@@ -1,28 +1,44 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { GuessingGameSessionState } from '../guessing-game.types';
 
-export const useGameState = (initialState: GuessingGameSessionState) => {
+import {
+  canFinishGame,
+  canPauseGame,
+  canResumeGame,
+  canStartGame,
+} from './game-state.utils';
+import { IUseGameState } from './game-state.types';
+
+export const useGameState: IUseGameState = (
+  initialState: GuessingGameSessionState,
+) => {
   const [gameState, setGameState] = useState(initialState);
 
-  const canStartGame = useMemo(() => {
-    const statesToStartGameFrom = [
-      GuessingGameSessionState.DONE,
-      GuessingGameSessionState.NOT_STARTED,
-    ];
+  const startGame = canStartGame(gameState)
+    ? () => setGameState(GuessingGameSessionState.IN_PROGRESS)
+    : null;
 
-    return statesToStartGameFrom.includes(gameState);
-  }, [gameState]);
+  const resumeGame = canResumeGame(gameState)
+    ? () => setGameState(GuessingGameSessionState.IN_PROGRESS)
+    : null;
 
-  const startGame = useCallback(() => {
-    if (canStartGame) {
-      setGameState(GuessingGameSessionState.IN_PROGRESS);
-    }
-  }, [canStartGame]);
+  const pauseGame = canPauseGame(gameState)
+    ? () => setGameState(GuessingGameSessionState.PAUSED)
+    : null;
+
+  const finishGame = canFinishGame(gameState)
+    ? () => setGameState(GuessingGameSessionState.DONE)
+    : null;
 
   return {
-    gameState,
-    canStartGame,
+    isIdle: gameState === GuessingGameSessionState.NOT_STARTED,
+    isRunning: gameState === GuessingGameSessionState.IN_PROGRESS,
+    isPaused: gameState === GuessingGameSessionState.PAUSED,
+    isFinished: gameState === GuessingGameSessionState.DONE,
     startGame,
+    resumeGame,
+    pauseGame,
+    finishGame,
   };
 };
