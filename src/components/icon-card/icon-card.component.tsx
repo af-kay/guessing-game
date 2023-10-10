@@ -23,7 +23,9 @@ export const IconCard: React.FC<IIconCard> = ({
           </AnimationWrapper>
         </CardFrontSide>
         <CardBackSide bgColor={bgColor}>
-          <ClosedIcon size={70} color={iconColor} />
+          <AnimationWrapper animation={animation}>
+            <ClosedIcon size={70} color={iconColor} />
+          </AnimationWrapper>
         </CardBackSide>
       </CardInner>
     </CardLayout>
@@ -34,7 +36,7 @@ const CardLayout = styled.div`
   min-width: 86px;
   min-height: 86px;
   border-radius: 8px;
-  padding: 6px;
+  // padding: 6px;
   cursor: pointer;
   background: transparent;
 `;
