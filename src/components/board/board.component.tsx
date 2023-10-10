@@ -5,9 +5,13 @@ export const Board = ({ children }: Required<React.PropsWithChildren>) => {
 };
 
 const Layout = styled.div`
-  display: grid;
-  // grid-gap: 16px;
-  width: 100%;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 25% 25% 25% 25%;
+  display: flex;
+  max-width: 620px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  > * {
+    flex: 1 0 21%; // 4 items per row
+  }
 `;

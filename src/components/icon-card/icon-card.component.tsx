@@ -33,10 +33,12 @@ export const IconCard: React.FC<IIconCard> = ({
 };
 
 const CardLayout = styled.div`
-  min-width: 86px;
-  min-height: 86px;
+  width: 86px;
+  height: 86px;
+  max-width: 86px;
+  max-height: 86px;
+
   border-radius: 8px;
-  // padding: 6px;
   cursor: pointer;
   background: transparent;
 `;
