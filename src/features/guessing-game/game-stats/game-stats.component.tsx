@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { useGameStats } from './game-stats.hook';
 
 export const GameStats = () => {
