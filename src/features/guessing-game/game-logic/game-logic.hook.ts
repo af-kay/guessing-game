@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
-
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 import { useGuessingGame } from '../guessing-game.hook';
 import { GuessCardState } from '../guessing-game.types';
+import { useGameEvents } from '../game-events';
+
+import { getNextCardStateByGuess } from './game-logic.utils';
 
 export const useGameLogic = () => {
   useGuessLogic__SideEffect();
@@ -11,34 +12,25 @@ export const useGameLogic = () => {
 
 const useGuessLogic__SideEffect = () => {
   const {
-    cards: { pickedCards, updateCard },
+    cards: { updateCard },
   } = useGuessingGame();
 
-  useEffect(() => {
-    const isEnoughToMakeGuess =
-      pickedCards.length === GUESSING_GAME_CONFIG.cardsForSingleGuess;
-
-    if (isEnoughToMakeGuess) {
-      const isGuessedRight = pickedCards.every(
-        c => c.icon === pickedCards[0].icon,
-      );
-
-      const nextCardsState = isGuessedRight
-        ? GuessCardState.GUESSED
-        : GuessCardState.GUESSED_WRONG;
+  useGameEvents({
+    onGuessed: (isRightGuess, cards) => {
+      const nextCardsState = getNextCardStateByGuess(isRightGuess);
 
       // Highlight all guessed cards with their next state
-      pickedCards.forEach(card => {
+      cards.forEach(card => {
         updateCard({
           ...card,
           state: nextCardsState,
         });
       });
 
-      if (!isGuessedRight) {
+      if (!isRightGuess) {
         // Close cards if guessed wrong
         setTimeout(() => {
-          pickedCards.forEach(card => {
+          cards.forEach(card => {
             updateCard({
               ...card,
               state: GuessCardState.CLOSED,
@@ -46,28 +38,25 @@ const useGuessLogic__SideEffect = () => {
           });
         }, GUESSING_GAME_CONFIG.wrongGuessDisplayMs);
       }
-    }
-  }, [pickedCards, updateCard]);
+    },
+  });
 };
 
 const useAutoSolveLogic__SideEffect = () => {
   const {
-    cards: { nonGuessedCards, updateCard },
+    cards: { updateCard },
   } = useGuessingGame();
 
-  useEffect(() => {
-    if (GUESSING_GAME_CONFIG.autoSolveLastGuess) {
-      const isOnlyLastGuessLeft =
-        nonGuessedCards.length === GUESSING_GAME_CONFIG.cardsForSingleGuess;
-
-      if (isOnlyLastGuessLeft) {
-        nonGuessedCards.forEach(card => {
+  useGameEvents({
+    onLastGuessLeft: remainingCards => {
+      if (GUESSING_GAME_CONFIG.autoSolveLastGuess) {
+        remainingCards.forEach(card => {
           updateCard({
             ...card,
             state: GuessCardState.GUESSED,
           });
         });
       }
-    }
-  }, [nonGuessedCards, updateCard]);
+    },
+  });
 };
