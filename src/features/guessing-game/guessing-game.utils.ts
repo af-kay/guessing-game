@@ -1,4 +1,4 @@
-import { GuessCardState } from './guess-card/guess-card.types';
+import { GuessCardState } from './guess-card';
 import { GUESSING_GAME_CONFIG } from './guessing-game.config';
 import { GuessCardData } from './guessing-game.types';
 
