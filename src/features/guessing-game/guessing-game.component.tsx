@@ -1,7 +1,6 @@
-import { GameBoard } from './game-board';
-
 import { useGameLogic } from './game-logic';
 import { GuessingGameContextProvider } from './guessing-game.context';
+import { GameScene } from './game-scene';
 
 export const GuessingGame = () => (
   <GuessingGameContextProvider>
@@ -12,5 +11,5 @@ export const GuessingGame = () => (
 const Game = () => {
   useGameLogic();
 
-  return <GameBoard />;
+  return <GameScene />;
 };
