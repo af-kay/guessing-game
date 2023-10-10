@@ -1,4 +1,4 @@
-import { GuessCardState } from './guess-card.types';
+import { GuessCardState } from '../../guessing-game.types';
 
 export const getCardColorFromState = (state: GuessCardState): string => {
   const converter: Record<GuessCardState, string> = {

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 import { useGuessingGame } from '../guessing-game.hook';
-import { GuessCardState } from '../guess-card';
+import { GuessCardState } from '../guessing-game.types';
 
 export const useGameLogic = () => {
   useGuessLogic__SideEffect();

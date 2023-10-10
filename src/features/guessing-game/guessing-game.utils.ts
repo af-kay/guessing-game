@@ -1,10 +1,10 @@
-import { GuessCardState } from './guess-card';
 import { GUESSING_GAME_CONFIG } from './guessing-game.config';
-import { GuessCardData } from './guessing-game.types';
+import { GuessCardData, GuessCardState } from './guessing-game.types';
 
 const isValidCardsAmount = () => {
   const isEnoughToMakeOnePair =
-    GUESSING_GAME_CONFIG.cardsAmount >= GUESSING_GAME_CONFIG.cardsForSingleGuess;
+    GUESSING_GAME_CONFIG.cardsAmount >=
+    GUESSING_GAME_CONFIG.cardsForSingleGuess;
   const isPairAmount =
     GUESSING_GAME_CONFIG.cardsAmount %
       GUESSING_GAME_CONFIG.cardsForSingleGuess ===

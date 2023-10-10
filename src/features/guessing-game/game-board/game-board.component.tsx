@@ -1,6 +1,6 @@
 import { Board } from '../../../components/board';
 
-import { GuessCard } from '../guess-card';
+import { GuessCard } from './guess-card';
 import { useGuessingGame } from '../guessing-game.hook';
 
 export const GameBoard = () => {

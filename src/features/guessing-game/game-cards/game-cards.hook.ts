@@ -1,8 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { GuessCardData } from '../guessing-game.types';
+import { GuessCardData, GuessCardState } from '../guessing-game.types';
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
-import { GuessCardState } from '../guess-card/guess-card.types';
 
 import type { IUseGameCards } from './game-cards.types';
 

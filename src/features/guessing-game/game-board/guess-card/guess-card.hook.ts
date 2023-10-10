@@ -1,10 +1,9 @@
 import { useMemo } from 'react';
 
-import { IconCardAnimationType } from '../../../components/icon-card';
+import { IconCardAnimationType } from '../../../../components/icon-card';
 
-import { GuessCardData } from '../guessing-game.types';
-import { GuessCardState } from './guess-card.types';
-import { useGuessingGame } from '../guessing-game.hook';
+import { GuessCardData, GuessCardState } from '../../guessing-game.types';
+import { useGuessingGame } from '../../guessing-game.hook';
 
 const getCardAnimation = (
   state: GuessCardState,
