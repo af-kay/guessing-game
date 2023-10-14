@@ -40,6 +40,7 @@ const CardLayout = styled.div`
 
   border-radius: 8px;
   cursor: pointer;
+
   background: transparent;
 `;
 
@@ -47,6 +48,9 @@ const CardInner = styled.div<Pick<IIconCard, 'isClosed'>>`
   position: relative;
   width: 100%;
   height: 100%;
+  border-radius: 8px;
+
+  outline: ${p => p.isClosed ? '1px dashed #44444488' : 'none'};
 
   ${p =>
     p.isClosed &&
