@@ -9,9 +9,11 @@ const pass = () => {};
 export const useGameEvents: IUseGameEvents = ({
   onGuessed = pass,
   onLastGuessLeft = pass,
+  onGameFinished = pass,
 }: GameEventCallbacks) => {
   const {
     cards: { pickedCards, nonGuessedCards },
+    state: { isFinished },
   } = useGuessingGame();
 
   useEffect(() => {
@@ -26,6 +28,12 @@ export const useGameEvents: IUseGameEvents = ({
       onGuessed(isGuessedRight, pickedCards);
     }
   }, [pickedCards, onGuessed]);
+
+  useEffect(() => {
+    if (isFinished) {
+      onGameFinished();
+    }
+  }, [isFinished, onGameFinished]);
 
   useEffect(() => {
     if (GUESSING_GAME_CONFIG.autoSolveLastGuess) {
