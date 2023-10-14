@@ -1,14 +1,23 @@
 import styled from 'styled-components';
 
+import { useGuessingGame } from '../guessing-game.hook';
+import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
+
+import { Confetti } from '../../../components/confetti';
+
+
+import { DebugInfo } from './debug-info/debug-info.component';
 import { GameBoard } from './game-board';
-import { GameStats } from './game-stats';
 
 export const GameScene = () => {
-  // TODO: controls, menus, etc
+  const {
+    state: { isFinished },
+  } = useGuessingGame();
 
   return (
     <Layout>
-      <GameStats />
+      {isFinished && <Confetti />}
+      {GUESSING_GAME_CONFIG.displayDebugStats && <DebugInfo />}
       <GameBoard />
     </Layout>
   );
