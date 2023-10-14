@@ -4,10 +4,13 @@ import { GuessCardState } from '../guessing-game.types';
 import { useGameEvents } from '../game-events';
 
 import { getNextCardStateByGuess } from './game-logic.utils';
+import { useEffect } from 'react';
 
 export const useGameLogic = () => {
   useGuessLogic__SideEffect();
   useAutoSolveLogic__SideEffect();
+  useGameAutoStart__SideEffect();
+  useFinishGameWhenNoCardsLeft__SideEffect();
 };
 
 const useGuessLogic__SideEffect = () => {
@@ -40,6 +43,33 @@ const useGuessLogic__SideEffect = () => {
       }
     },
   });
+};
+
+const useGameAutoStart__SideEffect = () => {
+  const {
+    state: { isIdle, startGame },
+  } = useGuessingGame();
+
+  useEffect(() => {
+    if (isIdle && startGame) {
+      startGame();
+    }
+  }, [isIdle, startGame]);
+};
+
+const useFinishGameWhenNoCardsLeft__SideEffect = () => {
+  const {
+    cards: { nonGuessedCards },
+    state: { finishGame },
+  } = useGuessingGame();
+
+  useEffect(() => {
+    const isNoCardsLeft = nonGuessedCards.length === 0;
+
+    if (isNoCardsLeft && finishGame) {
+      finishGame();
+    }
+  }, [nonGuessedCards, finishGame]);
 };
 
 const useAutoSolveLogic__SideEffect = () => {
