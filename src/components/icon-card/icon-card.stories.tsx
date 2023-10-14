@@ -4,7 +4,8 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { CardIconName, IIconCard } from './icon-card.types';
 import { IconCard } from './icon-card.component';
-import { getRandomArrayItem } from '../../shared/utils/get-random-array-item.utils';
+
+import { getRandomArrayItem } from '../../shared/utils';
 
 const meta = {
   title: 'components/IconCard',

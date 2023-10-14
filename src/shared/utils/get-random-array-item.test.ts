@@ -1,4 +1,4 @@
-import { getRandomArrayItem } from './get-random-array-item.utils';
+import { getRandomArrayItem } from './get-random-array-item';
 
 const genValues = (length = 5) => Array.from({ length }).map((_, i) => i);
 
