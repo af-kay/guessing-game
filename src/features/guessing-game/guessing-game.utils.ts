@@ -1,6 +1,8 @@
 import { GUESSING_GAME_CONFIG } from './guessing-game.config';
 import { GuessCardData, GuessCardState } from './guessing-game.types';
 
+import { isNonNullable } from '../../shared';
+
 const isValidCardsAmount = () => {
   const isEnoughToMakeOnePair =
     GUESSING_GAME_CONFIG.cardsAmount >=
@@ -32,10 +34,6 @@ const popRandomFromArray = <T>(array: T[]): undefined | T => {
   array.splice(index, 1);
 
   return randomItem;
-};
-
-const isNonNullable = <T>(o: null | T): o is T => {
-  return o !== null;
 };
 
 export const makeGuessingGameCards = (): GuessCardData[] => {
