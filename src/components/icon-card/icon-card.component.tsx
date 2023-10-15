@@ -50,8 +50,6 @@ const CardInner = styled.div<Pick<IIconCard, 'isClosed'>>`
   height: 100%;
   border-radius: 8px;
 
-  outline: ${p => p.isClosed ? '1px dashed #44444488' : 'none'};
-
   ${p =>
     p.isClosed &&
     css`
@@ -126,4 +124,6 @@ const CardFrontSide = styled(CardSide)``;
 
 const CardBackSide = styled(CardSide)<Pick<IIconCard, 'bgColor'>>`
   transform: rotateY(180deg);
+
+  outline: 1px dashed #44444488;
 `;
