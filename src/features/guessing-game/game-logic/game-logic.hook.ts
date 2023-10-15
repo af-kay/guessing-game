@@ -11,6 +11,27 @@ export const useGameLogic = () => {
   useAutoSolveLogic__SideEffect();
   useGameAutoStart__SideEffect();
   useFinishGameWhenNoCardsLeft__SideEffect();
+  useGenerateNewCardsAndAutoStartOnFinish__SideEffect();
+};
+
+const useGenerateNewCardsAndAutoStartOnFinish__SideEffect = (
+  delayMs = 1000,
+) => {
+  const {
+    cards: { reset },
+    state: { startGame }
+  } = useGuessingGame();
+
+  useGameEvents({
+    onGameFinished: () => {
+      setTimeout(() => {
+        if (startGame) {
+          startGame();
+          reset();
+        }
+      }, delayMs);
+    },
+  });
 };
 
 const useGuessLogic__SideEffect = () => {

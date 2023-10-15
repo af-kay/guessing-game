@@ -50,11 +50,16 @@ export const useGameCards: IUseGameCards = generateCardsFn => {
     [pickedCards, updateCard, findGameCardById],
   );
 
+  const reset = useCallback(() => {
+    setGameCards(generateCardsFn());
+  }, [generateCardsFn]);
+
   return {
     allCards: gameCards,
     pickCard,
     pickedCards,
     nonGuessedCards,
     updateCard,
+    reset,
   };
 };
