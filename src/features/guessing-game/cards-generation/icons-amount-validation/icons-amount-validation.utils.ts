@@ -1,4 +1,4 @@
-import { GuessingGameCardGenerationConfig } from '../card-generation.types';
+import { GuessingGameCardGenerationConfig } from '../cards-generation.types';
 
 export const isEnoughIconsForGame = ({
   cardsAmount,

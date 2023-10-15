@@ -2,7 +2,7 @@ import { GuessCardData, GuessCardState } from '../guessing-game.types';
 
 import { isValidCardsAmount } from './cards-amount-validation';
 import { isEnoughIconsForGame } from './icons-amount-validation';
-import { GuessingGameCardGenerationConfig } from './card-generation.types';
+import { GuessingGameCardGenerationConfig } from './cards-generation.types';
 
 import { isNonNullable, popRandomArrayItem } from '$shared/utils';
 
