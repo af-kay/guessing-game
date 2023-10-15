@@ -1,27 +1,16 @@
-# React + TypeScript + Vite
+# Guessing game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TODO: Rules (quite intuitive tho)
 
-Currently, two official plugins are available:
+### TODO list of features to implement
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. \* Dynamic config (+difficulty presets)
+1. \* Different icon (pre-)sets
+1. \* Ability to choose icons, custom sets from existing icons
+1. \*\*\* "Pick any react-icons" icon (?)
+1. \*\* UX improvements (research first)
+1. \*\*\* Online-mode/Offline-mode + PWA
+1. \* Game controls
+1. \*\* Difficulty autoincrease option
+1. \* Stats, streaks, etc
+1. \*\* Save&Load progress+settings (localStorage first)
