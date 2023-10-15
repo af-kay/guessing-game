@@ -78,8 +78,10 @@ const IconCardWithFeatures: React.FC<
     return () => {
       clearInterval(interval);
     };
-  }, [autoSpin]);
+  }, [autoSpin, toggleClosed]);
 
+  // Each render means each render :)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (randomizeIconEachRender) {
       const randomIconName = getRandomArrayItem(Object.values(CardIconName))!;

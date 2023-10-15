@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { IIconCard } from './icon-card.types';
 import { createClosedIcon, createFaIcon } from './icon-card.utils';
+import { ICON_CARD_BORDER_RADIUS, ICON_CARD_SIZE } from './icon-card.constants';
 
 export const IconCard: React.FC<IIconCard> = ({
   iconName: icon,
@@ -33,12 +34,12 @@ export const IconCard: React.FC<IIconCard> = ({
 };
 
 const CardLayout = styled.div`
-  width: 86px;
-  height: 86px;
-  max-width: 86px;
-  max-height: 86px;
+  width: ${ICON_CARD_SIZE}px;
+  height: ${ICON_CARD_SIZE}px;
+  max-width: ${ICON_CARD_SIZE}px;
+  max-height: ${ICON_CARD_SIZE}px;
 
-  border-radius: 8px;
+  border-radius: ${ICON_CARD_BORDER_RADIUS}px;
   cursor: pointer;
 
   background: transparent;
@@ -48,16 +49,15 @@ const CardInner = styled.div<Pick<IIconCard, 'isClosed'>>`
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
 
   ${p =>
     p.isClosed &&
     css`
       transform: rotateY(180deg);
     `}
-
-  transition: transform 0.4s;
-  transform-style: preserve-3d;
 `;
 
 const AnimationWrapper = styled.span<Pick<IIconCard, 'animation'>>`
@@ -111,11 +111,11 @@ const AnimationWrapper = styled.span<Pick<IIconCard, 'animation'>>`
 
 const CardSide = styled(CardLayout)<Pick<IIconCard, 'bgColor'>>`
   position: absolute;
-  backface-visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 0.5px solid #ffffff22;
+  backface-visibility: hidden;
 
   background: ${p => p.bgColor};
 `;

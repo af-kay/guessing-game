@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 import { IconCard } from '../../../../../components/icon-card';
 
 import { IIGuessCard } from './guess-card.types';
@@ -11,21 +9,13 @@ export const GuessCard: React.FC<IIGuessCard> = ({ id }) => {
     useGuessCard(id);
 
   return (
-    <Layout>
-      <IconCard
-        iconName={icon}
-        onClick={pickCard}
-        isClosed={isCardClosed}
-        bgColor={getCardColorFromState(state)}
-        animation={cardAnimation}
-        iconColor={'black'}
-      />
-    </Layout>
+    <IconCard
+      iconName={icon}
+      onClick={pickCard}
+      isClosed={isCardClosed}
+      bgColor={getCardColorFromState(state)}
+      animation={cardAnimation}
+      iconColor={'black'}
+    />
   );
 };
-
-const Layout = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
