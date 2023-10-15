@@ -1,6 +1,7 @@
+import path from 'path';
+
 import { defineConfig } from 'vitest/config';
 import { AliasOptions } from 'vite';
-import path from 'path';
 
 // TODO: Duplicated code from vite.config.ts. Do not RY
 const makeAliases = (): AliasOptions => {

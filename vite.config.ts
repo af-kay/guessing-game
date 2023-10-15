@@ -1,6 +1,7 @@
+import path from 'path';
+
 import { AliasOptions, ConfigEnv, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 
 const isProd = (mode: ConfigEnv['mode']) => mode === 'production';
 
