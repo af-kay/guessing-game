@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { IUseGameStats } from './game-stats.types';
+
 import { useGameEvents } from '../../game-events';
+
+import { IUseGameStats } from './game-stats.types';
 
 export const useGameStats: IUseGameStats = () => {
   const [guessesMade, setGuessesMade] = useState(0);

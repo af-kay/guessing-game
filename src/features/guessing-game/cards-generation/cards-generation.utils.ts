@@ -2,9 +2,9 @@ import { GuessCardData, GuessCardState } from '../guessing-game.types';
 
 import { isValidCardsAmount } from './cards-amount-validation';
 import { isEnoughIconsForGame } from './icons-amount-validation';
+import { GuessingGameCardGenerationConfig } from './card-generation.types';
 
 import { isNonNullable, popRandomArrayItem } from '$shared/utils';
-import { GuessingGameCardGenerationConfig } from './card-generation.types';
 
 export const makeGuessingGameCards = (
   config: GuessingGameCardGenerationConfig,

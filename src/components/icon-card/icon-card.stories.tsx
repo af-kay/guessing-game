@@ -2,10 +2,11 @@ import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Meta, StoryObj } from '@storybook/react';
 
+import { getRandomArrayItem } from '../../shared/utils';
+
 import { CardIconName, IIconCard } from './icon-card.types';
 import { IconCard } from './icon-card.component';
 
-import { getRandomArrayItem } from '../../shared/utils';
 
 const meta = {
   title: 'components/IconCard',

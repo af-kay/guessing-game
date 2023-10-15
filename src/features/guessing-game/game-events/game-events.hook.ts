@@ -2,7 +2,9 @@ import { useEffect } from 'react';
 
 import { useGuessingGame } from '../guessing-game.hook';
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
+
 import { GameEventCallbacks, IUseGameEvents } from './game-events.types';
+
 import { isArrayOfSame } from '$shared/utils';
 
 const pass = () => {};

@@ -1,8 +1,10 @@
+import { GuessingGameCardGenerationConfig } from '../card-generation.types';
+
+import { isEnoughIconsForGame } from './icons-amount-validation.utils';
+
 import { CardIconName } from '$components/icon-card';
 import { PartialBy } from '$shared/types';
 
-import { GuessingGameCardGenerationConfig } from '../card-generation.types';
-import { isEnoughIconsForGame } from './icons-amount-validation.utils';
 
 const makeConfig = ({
   cardsAmount,
