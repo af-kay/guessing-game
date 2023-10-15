@@ -1,7 +1,7 @@
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 import { GuessCardData, GuessCardState } from '../guessing-game.types';
 
-import { isNonNullable } from '../../../shared';
+import { isNonNullable, popRandomArrayItem } from '$shared/utils';
 
 const isValidCardsAmount = () => {
   const isEnoughToMakeOnePair =
@@ -21,20 +21,6 @@ const isEnoughIconsForGame = () =>
       GUESSING_GAME_CONFIG.cardsAmount /
         GUESSING_GAME_CONFIG.cardsForSingleGuess,
   );
-
-// NOTE: Modifies input array. Returns undefined if no elements in array
-const popRandomFromArray = <T>(array: T[]): undefined | T => {
-  if (!array.length) {
-    return undefined;
-  }
-
-  const index = Math.floor(Math.random() * array.length);
-  const randomItem = array[index];
-
-  array.splice(index, 1);
-
-  return randomItem;
-};
 
 export const makeGuessingGameCards = (): GuessCardData[] => {
   if (!isValidCardsAmount()) {
@@ -56,10 +42,10 @@ export const makeGuessingGameCards = (): GuessCardData[] => {
   let nextIconId = 1;
 
   while (slotsLeft) {
-    const randomIcon = popRandomFromArray(iconsHeap);
+    const randomIcon = popRandomArrayItem(iconsHeap);
     const indexesToInsert = Array.from({
       length: GUESSING_GAME_CONFIG.cardsForSingleGuess,
-    }).map(() => popRandomFromArray(freeCardSlotIndexes));
+    }).map(() => popRandomArrayItem(freeCardSlotIndexes));
 
     indexesToInsert.forEach(index => {
       const card: GuessCardData = {

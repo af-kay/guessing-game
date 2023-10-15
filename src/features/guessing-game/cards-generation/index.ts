@@ -1,1 +1,1 @@
-export * from './cards-generation.utils';
+export { makeGuessingGameCards } from './cards-generation.utils';
