@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { GuessingGameSession } from './guessing-game.types';
-import { makeGuessingGameCards } from './guessing-game.utils';
+import { makeGuessingGameCards } from './cards-generation';
 import { useGameCards } from './game-cards';
 import { useGameState } from './game-state';
 import { GUESSING_GAME_CONFIG } from './guessing-game.config';

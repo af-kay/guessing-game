@@ -1,7 +1,7 @@
-import { GUESSING_GAME_CONFIG } from './guessing-game.config';
-import { GuessCardData, GuessCardState } from './guessing-game.types';
+import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
+import { GuessCardData, GuessCardState } from '../guessing-game.types';
 
-import { isNonNullable } from '../../shared';
+import { isNonNullable } from '../../../shared';
 
 const isValidCardsAmount = () => {
   const isEnoughToMakeOnePair =
