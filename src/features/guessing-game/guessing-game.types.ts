@@ -10,6 +10,8 @@ export type GuessingGameConfig = {
   wrongGuessDisplayMs: number;
   iconsToChooseFrom: Array<CardIconName>;
   initialGameState: GuessingGameSessionState;
+  autoRestartOnFinish: boolean;
+  autoRestartDelay: number;
   displayDebugStats: boolean;
 };
 

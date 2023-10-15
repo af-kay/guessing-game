@@ -12,5 +12,7 @@ export const GUESSING_GAME_CONFIG: GuessingGameConfig = {
   wrongGuessDisplayMs: 700,
   iconsToChooseFrom: Object.values(CardIconName),
   initialGameState: GuessingGameSessionState.NOT_STARTED,
+  autoRestartOnFinish: true,
+  autoRestartDelay: 2500,
   displayDebugStats: false, // TODO: always disabled in prod mode
 };

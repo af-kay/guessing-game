@@ -14,22 +14,22 @@ export const useGameLogic = () => {
   useGenerateNewCardsAndAutoStartOnFinish__SideEffect();
 };
 
-const useGenerateNewCardsAndAutoStartOnFinish__SideEffect = (
-  delayMs = 2500,
-) => {
+const useGenerateNewCardsAndAutoStartOnFinish__SideEffect = () => {
   const {
     cards: { reset },
-    state: { startGame }
+    state: { startGame },
   } = useGuessingGame();
 
   useGameEvents({
     onGameFinished: () => {
-      setTimeout(() => {
-        if (startGame) {
-          startGame();
-          reset();
-        }
-      }, delayMs);
+      if (GUESSING_GAME_CONFIG.autoRestartOnFinish) {
+        setTimeout(() => {
+          if (startGame) {
+            startGame();
+            reset();
+          }
+        }, GUESSING_GAME_CONFIG.autoRestartDelay);
+      }
     },
   });
 };
