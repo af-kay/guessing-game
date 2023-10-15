@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useGuessingGame } from '../guessing-game.hook';
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 import { GameEventCallbacks, IUseGameEvents } from './game-events.types';
+import { isArrayOfSame } from '$shared/utils';
 
 const pass = () => {};
 
@@ -21,9 +22,7 @@ export const useGameEvents: IUseGameEvents = ({
       pickedCards.length === GUESSING_GAME_CONFIG.cardsForSingleGuess;
 
     if (isEnoughToMakeGuess) {
-      const isGuessedRight = pickedCards.every(
-        c => c.icon === pickedCards[0].icon,
-      );
+      const isGuessedRight = isArrayOfSame(pickedCards, c => c.icon);
 
       onGuessed(isGuessedRight, pickedCards);
     }
