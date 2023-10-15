@@ -126,7 +126,6 @@ const CardSide = styled(CardLayout)<
     p.highlightColor &&
     css`
       box-shadow: 0px 0px 6px 0 ${p.highlightColor};
-      
     `}
 `;
 
