@@ -14,6 +14,7 @@ export type IconCardAnimationType = 'shake' | 'infinite-shake';
 export type IIconCard = {
   iconName: CardIconName;
   isClosed: boolean;
+  highlightColor?: string;
   animation?: IconCardAnimationType;
   bgColor: string;
   iconColor: string;

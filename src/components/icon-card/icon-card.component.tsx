@@ -9,6 +9,7 @@ export const IconCard: React.FC<IIconCard> = ({
   isClosed,
   animation,
   bgColor,
+  highlightColor,
   iconColor,
   onClick,
 }) => {
@@ -18,12 +19,12 @@ export const IconCard: React.FC<IIconCard> = ({
   return (
     <CardLayout onClick={onClick}>
       <CardInner isClosed={isClosed}>
-        <CardFrontSide bgColor={bgColor}>
+        <CardFrontSide bgColor={bgColor} highlightColor={highlightColor}>
           <AnimationWrapper animation={animation}>
             <FaIcon size={70} color={iconColor} />
           </AnimationWrapper>
         </CardFrontSide>
-        <CardBackSide bgColor={bgColor}>
+        <CardBackSide bgColor={bgColor} highlightColor={highlightColor}>
           <AnimationWrapper animation={animation}>
             <ClosedIcon size={70} color={iconColor} />
           </AnimationWrapper>
@@ -109,7 +110,9 @@ const AnimationWrapper = styled.span<Pick<IIconCard, 'animation'>>`
   }
 `;
 
-const CardSide = styled(CardLayout)<Pick<IIconCard, 'bgColor'>>`
+const CardSide = styled(CardLayout)<
+  Pick<IIconCard, 'bgColor' | 'highlightColor'>
+>`
   position: absolute;
   display: flex;
   align-items: center;
@@ -118,6 +121,13 @@ const CardSide = styled(CardLayout)<Pick<IIconCard, 'bgColor'>>`
   backface-visibility: hidden;
 
   background: ${p => p.bgColor};
+
+  ${p =>
+    p.highlightColor &&
+    css`
+      box-shadow: 0px 0px 6px 0 ${p.highlightColor};
+      
+    `}
 `;
 
 const CardFrontSide = styled(CardSide)``;

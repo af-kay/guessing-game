@@ -1,7 +1,10 @@
 import { IconCard } from '$components/icon-card';
 
 import { IIGuessCard } from './guess-card.types';
-import { getCardColorFromState } from './guess-card.utils';
+import {
+  getCardColorFromState,
+  getHighlightColorFromState,
+} from './guess-card.utils';
 import { useGuessCard } from './guess-card.hook';
 
 export const GuessCard: React.FC<IIGuessCard> = ({ id }) => {
@@ -14,6 +17,7 @@ export const GuessCard: React.FC<IIGuessCard> = ({ id }) => {
       onClick={pickCard}
       isClosed={isCardClosed}
       bgColor={getCardColorFromState(state)}
+      highlightColor={getHighlightColorFromState(state)}
       animation={cardAnimation}
       iconColor={'black'}
     />

@@ -1,3 +1,4 @@
+import { IIconCard } from '$components/icon-card/icon-card.types';
 import { GuessCardState } from '../../../guessing-game.types';
 
 export const getCardColorFromState = (state: GuessCardState): string => {
@@ -7,6 +8,18 @@ export const getCardColorFromState = (state: GuessCardState): string => {
     [GuessCardState.GUESSED]: 'lightgreen',
     [GuessCardState.GUESSED_WRONG]: 'indianred',
     [GuessCardState.SOLVED]: 'white',
+  };
+
+  return converter[state];
+};
+
+export const getHighlightColorFromState = (state: GuessCardState) => {
+  const converter: Record<GuessCardState, IIconCard['highlightColor']> = {
+    [GuessCardState.CLOSED]: undefined,
+    [GuessCardState.PICKED]: '#ffffff44',
+    [GuessCardState.GUESSED]: undefined,
+    [GuessCardState.GUESSED_WRONG]: undefined,
+    [GuessCardState.SOLVED]: undefined,
   };
 
   return converter[state];
