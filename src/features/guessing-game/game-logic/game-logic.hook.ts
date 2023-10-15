@@ -15,7 +15,7 @@ export const useGameLogic = () => {
 };
 
 const useGenerateNewCardsAndAutoStartOnFinish__SideEffect = (
-  delayMs = 1000,
+  delayMs = 2500,
 ) => {
   const {
     cards: { reset },
