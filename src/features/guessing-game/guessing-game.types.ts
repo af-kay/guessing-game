@@ -3,6 +3,16 @@ import { CardIconName } from '../../components/icon-card';
 import { IUseGameCards } from './game-cards';
 import { IUseGameState } from './game-state';
 
+export type GuessingGameConfig = {
+  cardsForSingleGuess: number;
+  cardsAmount: number;
+  autoSolveLastGuess: boolean;
+  wrongGuessDisplayMs: number;
+  iconsToChooseFrom: Array<CardIconName>;
+  initialGameState: GuessingGameSessionState;
+  displayDebugStats: boolean;
+};
+
 export enum GuessingGameSessionState {
   NOT_STARTED = 'not_started',
   IN_PROGRESS = 'in_progress',

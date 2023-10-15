@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "prettify": "prettier src/. --write",
-    "test": "vitest src/. --watch",
+    "test": "vitest",
+    "test:w": "vitest --watch",
     "deploy": "gh-pages -d dist",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"

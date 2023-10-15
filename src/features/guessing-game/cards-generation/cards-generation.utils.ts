@@ -1,41 +1,27 @@
-import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 import { GuessCardData, GuessCardState } from '../guessing-game.types';
 
+import { isValidCardsAmount } from './cards-amount-validation';
+import { isEnoughIconsForGame } from './icons-amount-validation';
+
 import { isNonNullable, popRandomArrayItem } from '$shared/utils';
+import { GuessingGameCardGenerationConfig } from './card-generation.types';
 
-const isValidCardsAmount = () => {
-  const isEnoughToMakeOnePair =
-    GUESSING_GAME_CONFIG.cardsAmount >=
-    GUESSING_GAME_CONFIG.cardsForSingleGuess;
-  const isPairAmount =
-    GUESSING_GAME_CONFIG.cardsAmount %
-      GUESSING_GAME_CONFIG.cardsForSingleGuess ===
-    0;
-
-  return isEnoughToMakeOnePair && isPairAmount;
-};
-
-const isEnoughIconsForGame = () =>
-  Boolean(
-    GUESSING_GAME_CONFIG.iconsToChooseFrom.length >=
-      GUESSING_GAME_CONFIG.cardsAmount /
-        GUESSING_GAME_CONFIG.cardsForSingleGuess,
-  );
-
-export const makeGuessingGameCards = (): GuessCardData[] => {
-  if (!isValidCardsAmount()) {
+export const makeGuessingGameCards = (
+  config: GuessingGameCardGenerationConfig,
+): GuessCardData[] => {
+  if (!isValidCardsAmount(config)) {
     throw new Error('Invalid amount of cards to play guessing game!');
   }
-  if (!isEnoughIconsForGame()) {
+  if (!isEnoughIconsForGame(config)) {
     throw new Error('Not enough icons to choose from!');
   }
 
-  const iconsHeap = [...GUESSING_GAME_CONFIG.iconsToChooseFrom];
+  const iconsHeap = [...config.iconsToChooseFrom];
   const cardsData: Array<null | GuessCardData> = Array.from({
-    length: GUESSING_GAME_CONFIG.cardsAmount,
+    length: config.cardsAmount,
   }).map(() => null);
   const freeCardSlotIndexes = Array.from({
-    length: GUESSING_GAME_CONFIG.cardsAmount,
+    length: config.cardsAmount,
   }).map((_, index) => index);
 
   let slotsLeft = freeCardSlotIndexes.length;
@@ -44,7 +30,7 @@ export const makeGuessingGameCards = (): GuessCardData[] => {
   while (slotsLeft) {
     const randomIcon = popRandomArrayItem(iconsHeap);
     const indexesToInsert = Array.from({
-      length: GUESSING_GAME_CONFIG.cardsForSingleGuess,
+      length: config.cardsForSingleGuess,
     }).map(() => popRandomArrayItem(freeCardSlotIndexes));
 
     indexesToInsert.forEach(index => {
@@ -57,7 +43,7 @@ export const makeGuessingGameCards = (): GuessCardData[] => {
       cardsData[index!] = card;
     });
 
-    slotsLeft -= GUESSING_GAME_CONFIG.cardsForSingleGuess;
+    slotsLeft -= config.cardsForSingleGuess;
   }
 
   return cardsData.filter(isNonNullable);
