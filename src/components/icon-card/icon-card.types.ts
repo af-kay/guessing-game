@@ -5,8 +5,16 @@ export enum CardIconName {
   RUST = 'rust',
   SNAPCHAT = 'snapchat',
   TELEGRAM = 'telegram',
-  PEACE = 'peace',
   LINUX = 'linux',
+  GITHUB = 'github',
+  REDHAT = 'redhat',
+  PYTHON = 'python',
+  APP_STORE = 'app_store',
+  TIKTOK = 'tiktok',
+  JAVA = 'java',
+  GITLAB = 'gitlab',
+  GOLANG = 'golang',
+  CHROME = 'chrome',
 }
 
 export type IconCardAnimationType = 'shake' | 'infinite-shake';
