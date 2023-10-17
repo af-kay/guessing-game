@@ -7,7 +7,7 @@ import {
 
 export const GUESSING_GAME_CONFIG: GuessingGameConfig = {
   cardsForSingleGuess: 2,
-  cardsAmount: 28,
+  cardsAmount: 16,
   autoSolveLastGuess: true,
   wrongGuessDisplayMs: 700,
   iconsToChooseFrom: Object.values(CardIconName),

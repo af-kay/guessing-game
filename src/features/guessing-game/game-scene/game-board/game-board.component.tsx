@@ -10,7 +10,7 @@ export const GameBoard = () => {
   } = useGuessingGame();
 
   return (
-    <Board maxColumns={7}>
+    <Board maxColumns={4}>
       {allCards.map(card => (
         <GuessCard key={card.id} id={card.id} />
       ))}
