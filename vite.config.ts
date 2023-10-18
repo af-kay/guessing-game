@@ -3,10 +3,11 @@ import path from 'path';
 import { AliasOptions, ConfigEnv, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-const isProd = (mode: ConfigEnv['mode']) => mode === 'production';
+const isProdMode = (mode: ConfigEnv['mode']) => mode === 'production';
+const isDevMode = (mode: ConfigEnv['mode']) => mode === 'development';
 
 const getAppBase = (mode: ConfigEnv['mode']) =>
-  isProd(mode) ? '/guessing-game' : '';
+  isProdMode(mode) ? '/guessing-game' : '';
 
 const makeAliases = (): AliasOptions => {
   const prefix = '$';
@@ -26,6 +27,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   base: getAppBase(mode),
   resolve: {
     alias: makeAliases(),
+  },
+  define: {
+    IS_DEV_MODE: JSON.stringify(isDevMode(mode)),
   },
   server: {
     port: 3000,

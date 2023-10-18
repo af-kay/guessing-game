@@ -6,7 +6,7 @@ export function App() {
   return (
     <>
       <GuessingGame />
-      <Toaster />
+      <Toaster position="bottom-right" />
     </>
   );
 }
