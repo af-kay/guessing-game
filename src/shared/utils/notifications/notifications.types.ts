@@ -1,7 +1,5 @@
 export enum NotifyLevel {
-  TRACE,
-  DEBUG,
+  DEV,
   INFO,
-  WARN,
   ERROR,
 }

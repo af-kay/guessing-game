@@ -1,1 +1,4 @@
-export { createNotifier } from './create-notifier.utils';
+export {
+  createNotifier,
+  createPrefixedNotifier,
+} from './create-notifier.utils';

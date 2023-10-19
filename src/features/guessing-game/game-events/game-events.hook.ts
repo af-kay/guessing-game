@@ -5,9 +5,18 @@ import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 
 import { GameEventCallbacks, IUseGameEvents } from './game-events.types';
 
-import { isArrayOfSame } from '$shared/utils';
+import {
+  NotifyLevel,
+  createPrefixedNotifier,
+  isArrayOfSame,
+} from '$shared/utils';
 
 const pass = () => {};
+
+const trace = createPrefixedNotifier({
+  level: NotifyLevel.DEV,
+  prefix: 'useGameEvents',
+});
 
 export const useGameEvents: IUseGameEvents = ({
   onGuessed = pass,
@@ -26,12 +35,14 @@ export const useGameEvents: IUseGameEvents = ({
     if (isEnoughToMakeGuess) {
       const isGuessedRight = isArrayOfSame(pickedCards, c => c.icon);
 
+      trace('onGuessed');
       onGuessed(isGuessedRight, pickedCards);
     }
   }, [pickedCards, onGuessed]);
 
   useEffect(() => {
     if (isFinished) {
+      trace('onGameFinished');
       onGameFinished();
     }
   }, [isFinished, onGameFinished]);
@@ -42,6 +53,7 @@ export const useGameEvents: IUseGameEvents = ({
         nonGuessedCards.length === GUESSING_GAME_CONFIG.cardsForSingleGuess;
 
       if (isOnlyLastGuessLeft) {
+        trace('onLastGuessLeft');
         onLastGuessLeft(nonGuessedCards);
       }
     }

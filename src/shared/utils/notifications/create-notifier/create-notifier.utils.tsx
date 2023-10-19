@@ -1,14 +1,18 @@
 import toast from 'react-hot-toast';
 
-import { DEV_PROTECTED_NOTIFY_LEVELS } from './create-notifier.constants';
-import { ICreateNotifier } from './create-notifier.types';
+import { DEFAULT_NOTIFY_ICONS, DEV_PROTECTED_NOTIFY_LEVELS } from './create-notifier.constants';
+import {
+  ICreateNotifier,
+  ICreatePrefixedNotifier,
+} from './create-notifier.types';
 
 export const createNotifier = ({
-  icon: Icon,
+  icon: RequestedIcon,
   level,
   requirePrefix = false,
 }: ICreateNotifier) => {
   const isDevProtectedLevel = DEV_PROTECTED_NOTIFY_LEVELS.includes(level);
+  const Icon = RequestedIcon ?? DEFAULT_NOTIFY_ICONS[level];
 
   const notify = (message: string) => {
     if (isDevProtectedLevel && !IS_DEV_MODE) {
@@ -25,4 +29,16 @@ export const createNotifier = ({
   } else {
     return notify;
   }
+};
+
+export const createPrefixedNotifier = ({
+  level,
+  prefix,
+  icon,
+}: ICreatePrefixedNotifier) => {
+  const notify = createNotifier({ icon, requirePrefix: true, level });
+
+  return (message: string) => {
+    notify(prefix, message);
+  };
 };
