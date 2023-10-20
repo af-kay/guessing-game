@@ -1,14 +1,12 @@
 import { useState } from 'react';
 
-import { GuessingGameSessionState } from '../guessing-game.types';
-
+import { GuessingGameSessionState, UseGameState } from './game-state.types';
 import {
   canFinishGame,
   canPauseGame,
   canResumeGame,
   canStartGame,
 } from './game-state.utils';
-import { UseGameState } from './game-state.types';
 
 export const useGameState: UseGameState = (
   initialState: GuessingGameSessionState,

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FaCog } from 'react-icons/fa';
 
 import { useGuessingGame } from '../guessing-game.hook';
-import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
+import { DEFAULT_GUESSING_GAME_CONFIG } from '../game-config';
 
 import { DebugInfo } from './debug-info';
 import { GameBoard } from './game-board';
@@ -23,7 +23,7 @@ export const GameScene = () => {
         </p>
         <GameBoard />
       </Layout>
-      {GUESSING_GAME_CONFIG.displayDebugStats && <DebugInfo />}
+      {DEFAULT_GUESSING_GAME_CONFIG.displayDebugStats && <DebugInfo />}
       {isFinished && <Confetti />}
     </>
   );

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
+import { DEFAULT_GUESSING_GAME_CONFIG } from '../game-config';
 import { useGuessingGame } from '../guessing-game.hook';
 import { GuessCardState } from '../guessing-game.types';
 import { useGameEvents } from '../game-events';
@@ -23,13 +23,13 @@ const useGenerateNewCardsAndAutoStartOnFinish__SideEffect = () => {
 
   useGameEvents({
     onGameFinished: () => {
-      if (GUESSING_GAME_CONFIG.autoRestartOnFinish) {
+      if (DEFAULT_GUESSING_GAME_CONFIG.autoRestartOnFinish) {
         setTimeout(() => {
           if (startGame) {
             startGame();
             reset();
           }
-        }, GUESSING_GAME_CONFIG.autoRestartDelay);
+        }, DEFAULT_GUESSING_GAME_CONFIG.autoRestartDelay);
       }
     },
   });
@@ -61,7 +61,7 @@ const useGuessLogic__SideEffect = () => {
               state: GuessCardState.CLOSED,
             });
           });
-        }, GUESSING_GAME_CONFIG.wrongGuessDisplayMs);
+        }, DEFAULT_GUESSING_GAME_CONFIG.wrongGuessDisplayMs);
       }
     },
   });
@@ -101,7 +101,7 @@ const useAutoSolveLogic__SideEffect = () => {
 
   useGameEvents({
     onLastGuessLeft: remainingCards => {
-      if (GUESSING_GAME_CONFIG.autoSolveLastGuess) {
+      if (DEFAULT_GUESSING_GAME_CONFIG.autoSolveLastGuess) {
         remainingCards.forEach(card => {
           updateCard({
             ...card,

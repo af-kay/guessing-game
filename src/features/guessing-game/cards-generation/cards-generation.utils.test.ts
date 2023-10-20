@@ -1,11 +1,9 @@
-import { GuessingGameConfig } from '../guessing-game.types';
+import { GuessingGameConfig } from '../game-config';
 
 import { makeGuessingGameCards } from './cards-generation.utils';
 
 import { CardIconName } from '$shared/components/icon-card';
 import { PartialBy } from '$shared/types';
-
-
 
 const makeConfig = ({
   cardsAmount,

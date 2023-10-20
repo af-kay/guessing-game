@@ -1,11 +1,10 @@
-import { CardIconName } from '../../shared/components/icon-card';
+import { GuessingGameSessionState } from '../game-state';
 
-import {
-  GuessingGameConfig,
-  GuessingGameSessionState,
-} from './guessing-game.types';
+import type { GuessingGameConfig } from './game-config.types';
 
-export const GUESSING_GAME_CONFIG: GuessingGameConfig = {
+import { CardIconName } from '$shared/components/icon-card';
+
+export const DEFAULT_GUESSING_GAME_CONFIG: GuessingGameConfig = {
   cardsForSingleGuess: 2,
   cardsAmount: 16,
   autoSolveLastGuess: true,

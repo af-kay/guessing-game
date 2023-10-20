@@ -1,4 +1,4 @@
-import { GuessingGameSessionState } from '../guessing-game.types';
+import { GuessingGameSessionState } from './game-state.types';
 
 export const canStartGame = (state: GuessingGameSessionState) => {
   const statesToStartGameFrom = [

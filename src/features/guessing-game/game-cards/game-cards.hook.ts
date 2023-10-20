@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 
 import { GuessCardData, GuessCardState } from '../guessing-game.types';
-import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
+import { DEFAULT_GUESSING_GAME_CONFIG } from '../game-config';
 
 import type { UseGameCards } from './game-cards.types';
 
@@ -36,7 +36,7 @@ export const useGameCards: UseGameCards = generateCardsFn => {
       const card = findGameCardById(id);
 
       const isEnoughPickedAlready = Boolean(
-        pickedCards.length === GUESSING_GAME_CONFIG.cardsForSingleGuess,
+        pickedCards.length === DEFAULT_GUESSING_GAME_CONFIG.cardsForSingleGuess,
       );
       const isCardPickable = card.state === GuessCardState.CLOSED;
 

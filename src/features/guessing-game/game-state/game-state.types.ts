@@ -1,4 +1,9 @@
-import { GuessingGameSessionState } from '../guessing-game.types';
+export enum GuessingGameSessionState {
+  NOT_STARTED = 'not_started',
+  IN_PROGRESS = 'in_progress',
+  PAUSED = 'paused',
+  DONE = 'done',
+}
 
 export type UseGameState = (initialState: GuessingGameSessionState) => {
   isIdle: boolean;

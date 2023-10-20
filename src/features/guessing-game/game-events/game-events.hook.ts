@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { useGuessingGame } from '../guessing-game.hook';
-import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
+import { DEFAULT_GUESSING_GAME_CONFIG } from '../game-config';
 
 import { GameEventCallbacks, UseGameEvents } from './game-events.types';
 
@@ -21,7 +21,7 @@ export const useGameEvents: UseGameEvents = ({
 
   useEffect(() => {
     const isEnoughToMakeGuess =
-      pickedCards.length === GUESSING_GAME_CONFIG.cardsForSingleGuess;
+      pickedCards.length === DEFAULT_GUESSING_GAME_CONFIG.cardsForSingleGuess;
 
     if (isEnoughToMakeGuess) {
       const isGuessedRight = isArrayOfSame(pickedCards, c => c.icon);
@@ -37,9 +37,10 @@ export const useGameEvents: UseGameEvents = ({
   }, [isFinished, onGameFinished]);
 
   useEffect(() => {
-    if (GUESSING_GAME_CONFIG.autoSolveLastGuess) {
+    if (DEFAULT_GUESSING_GAME_CONFIG.autoSolveLastGuess) {
       const isOnlyLastGuessLeft =
-        nonGuessedCards.length === GUESSING_GAME_CONFIG.cardsForSingleGuess;
+        nonGuessedCards.length ===
+        DEFAULT_GUESSING_GAME_CONFIG.cardsForSingleGuess;
 
       if (isOnlyLastGuessLeft) {
         onLastGuessLeft(nonGuessedCards);
