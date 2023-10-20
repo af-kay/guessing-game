@@ -16,6 +16,7 @@ const Layout = styled.div<Pick<IBoard, 'maxColumns'>>`
   gap: ${BOARD_GAP}px;
   padding: ${BOARD_PADDING}px;
   border-radius: 8px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.4);
 
   background: ${BOARD_COLORS.BG};
   background: linear-gradient(to right, ${BOARD_COLORS.BG_GRADIENT.join(', ')});
