@@ -2,7 +2,7 @@ import { GuessingGameConfig } from '../guessing-game.types';
 
 import { makeGuessingGameCards } from './cards-generation.utils';
 
-import { CardIconName } from '$components/icon-card';
+import { CardIconName } from '$shared/components/icon-card';
 import { PartialBy } from '$shared/types';
 
 

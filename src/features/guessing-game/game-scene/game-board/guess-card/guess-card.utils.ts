@@ -1,6 +1,6 @@
 import { GuessCardState } from '../../../guessing-game.types';
 
-import { IIconCard } from '$components/icon-card/icon-card.types';
+import { IIconCard } from '$shared/components/icon-card/icon-card.types';
 
 export const getCardColorFromState = (state: GuessCardState): string => {
   const converter: Record<GuessCardState, string> = {

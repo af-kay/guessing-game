@@ -1,7 +1,7 @@
 import { BOARD_GAP, BOARD_PADDING } from './board.constants';
 import { IBoard } from './board.types';
 
-import { ICON_CARD_SIZE } from '$components/icon-card/icon-card.constants';
+import { ICON_CARD_SIZE } from '$shared/components/icon-card/icon-card.constants';
 
 export const getBoardMaxWidth = ({
   maxColumns,

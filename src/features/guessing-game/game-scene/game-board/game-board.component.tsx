@@ -2,7 +2,7 @@ import { useGuessingGame } from '../../guessing-game.hook';
 
 import { GuessCard } from './guess-card';
 
-import { Board } from '$components/board';
+import { Board } from '$shared/components/board';
 
 export const GameBoard = () => {
   const {

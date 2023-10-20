@@ -1,4 +1,4 @@
-import { BooleanText } from '../../../../components/boolean-text';
+import { BooleanText } from '../../../../shared/components/boolean-text';
 import { useGuessingGame } from '../../guessing-game.hook';
 
 export const DebugInfo = () => {

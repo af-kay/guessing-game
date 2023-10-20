@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { getRandomArrayItem } from '../../shared/utils';
+import { getRandomArrayItem } from '../../utils';
 
 import { CardIconName, IIconCard } from './icon-card.types';
 import { IconCard } from './icon-card.component';

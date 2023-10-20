@@ -6,7 +6,7 @@ import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 import { DebugInfo } from './debug-info';
 import { GameBoard } from './game-board';
 
-import { Confetti } from '$components/confetti';
+import { Confetti } from '$shared/components/confetti';
 
 export const GameScene = () => {
   const {

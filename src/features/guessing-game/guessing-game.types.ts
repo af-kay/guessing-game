@@ -1,4 +1,4 @@
-import { CardIconName } from '../../components/icon-card';
+import { CardIconName } from '../../shared/components/icon-card';
 
 import { IUseGameCards } from './game-cards';
 import { IUseGameState } from './game-state';

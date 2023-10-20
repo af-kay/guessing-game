@@ -2,7 +2,7 @@ import { GuessingGameCardGenerationConfig } from '../cards-generation.types';
 
 import { isValidCardsAmount } from './cards-amount-validation.utils';
 
-import { CardIconName } from '$components/icon-card';
+import { CardIconName } from '$shared/components/icon-card';
 import { PartialBy } from '$shared/types';
 
 
