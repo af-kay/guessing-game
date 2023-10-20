@@ -1,4 +1,4 @@
-export const ICON_CARD_SIZE = 86;
+export const ICON_CARD_SIZE = 102;
 export const ICON_CARD_ICON_SIZE = 64;
 export const ICON_CARD_CLOSED_ICON_SIZE = ICON_CARD_ICON_SIZE;
 
