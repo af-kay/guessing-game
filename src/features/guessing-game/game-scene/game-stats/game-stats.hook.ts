@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { useGameEvents } from '../../game-events';
 
-import { IUseGameStats } from './game-stats.types';
+import { UseGameStats } from './game-stats.types';
 
-export const useGameStats: IUseGameStats = () => {
+export const useGameStats: UseGameStats = () => {
   const [guessesMade, setGuessesMade] = useState(0);
   const [wrongGuesses, setWrongGuesses] = useState(0);
   const [successfulGuesses, setSuccessfulGuesses] = useState(0);

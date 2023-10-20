@@ -1,6 +1,6 @@
 import { GuessCardData } from '../guessing-game.types';
 
-export type IUseGameCards = (generateCardsFn: () => GuessCardData[]) => {
+export type UseGameCards = (generateCardsFn: () => GuessCardData[]) => {
   allCards: GuessCardData[];
   pickedCards: GuessCardData[];
   nonGuessedCards: GuessCardData[];

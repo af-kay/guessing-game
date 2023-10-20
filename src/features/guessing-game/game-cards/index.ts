@@ -1,3 +1,3 @@
 export { useGameCards } from './game-cards.hook';
 
-export type { IUseGameCards } from './game-cards.types';
+export type { UseGameCards } from './game-cards.types';

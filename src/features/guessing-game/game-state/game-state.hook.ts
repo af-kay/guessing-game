@@ -8,9 +8,9 @@ import {
   canResumeGame,
   canStartGame,
 } from './game-state.utils';
-import { IUseGameState } from './game-state.types';
+import { UseGameState } from './game-state.types';
 
-export const useGameState: IUseGameState = (
+export const useGameState: UseGameState = (
   initialState: GuessingGameSessionState,
 ) => {
   const [gameState, setGameState] = useState(initialState);

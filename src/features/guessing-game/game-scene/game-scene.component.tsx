@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FaCog } from 'react-icons/fa';
 
 import { useGuessingGame } from '../guessing-game.hook';
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
@@ -6,7 +7,7 @@ import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 import { DebugInfo } from './debug-info';
 import { GameBoard } from './game-board';
 
-import { Confetti } from '$shared/components/confetti';
+import { Confetti } from '$shared/components';
 
 export const GameScene = () => {
   const {
@@ -17,6 +18,9 @@ export const GameScene = () => {
     <>
       <Layout>
         <Title>Guessing game</Title>
+        <p>
+          Configure <FaCog />{' '}
+        </p>
         <GameBoard />
       </Layout>
       {GUESSING_GAME_CONFIG.displayDebugStats && <DebugInfo />}

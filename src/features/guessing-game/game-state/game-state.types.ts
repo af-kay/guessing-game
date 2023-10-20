@@ -1,6 +1,6 @@
 import { GuessingGameSessionState } from '../guessing-game.types';
 
-export type IUseGameState = (initialState: GuessingGameSessionState) => {
+export type UseGameState = (initialState: GuessingGameSessionState) => {
   isIdle: boolean;
   isRunning: boolean;
   isFinished: boolean;

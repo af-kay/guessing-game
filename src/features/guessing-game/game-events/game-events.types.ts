@@ -6,4 +6,4 @@ export type GameEventCallbacks = {
   onGameFinished?: () => void;
 };
 
-export type IUseGameEvents = (callbacks: GameEventCallbacks) => void;
+export type UseGameEvents = (callbacks: GameEventCallbacks) => void;

@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { useGuessingGame } from '../guessing-game.hook';
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 
-import { GameEventCallbacks, IUseGameEvents } from './game-events.types';
+import { GameEventCallbacks, UseGameEvents } from './game-events.types';
 
 import { isArrayOfSame } from '$shared/utils';
 
 const pass = () => {};
 
-export const useGameEvents: IUseGameEvents = ({
+export const useGameEvents: UseGameEvents = ({
   onGuessed = pass,
   onLastGuessLeft = pass,
   onGameFinished = pass,

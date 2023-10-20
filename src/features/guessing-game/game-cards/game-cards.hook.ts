@@ -3,9 +3,9 @@ import { useCallback, useMemo, useState } from 'react';
 import { GuessCardData, GuessCardState } from '../guessing-game.types';
 import { GUESSING_GAME_CONFIG } from '../guessing-game.config';
 
-import type { IUseGameCards } from './game-cards.types';
+import type { UseGameCards } from './game-cards.types';
 
-export const useGameCards: IUseGameCards = generateCardsFn => {
+export const useGameCards: UseGameCards = generateCardsFn => {
   const [gameCards, setGameCards] = useState(generateCardsFn);
 
   const findGameCardById = useCallback(

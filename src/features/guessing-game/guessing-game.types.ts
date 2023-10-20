@@ -1,7 +1,7 @@
 import { CardIconName } from '../../shared/components/icon-card';
 
-import { IUseGameCards } from './game-cards';
-import { IUseGameState } from './game-state';
+import { UseGameCards } from './game-cards';
+import { UseGameState } from './game-state';
 
 export type GuessingGameConfig = {
   cardsForSingleGuess: number;
@@ -37,6 +37,6 @@ export type GuessCardData = {
 };
 
 export type GuessingGameSession = {
-  state: ReturnType<IUseGameState>;
-  cards: ReturnType<IUseGameCards>;
+  state: ReturnType<UseGameState>;
+  cards: ReturnType<UseGameCards>;
 };
