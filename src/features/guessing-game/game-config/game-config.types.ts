@@ -7,6 +7,7 @@ export type GuessingGameConfig = {
   cardsAmount: number;
   autoSolveLastGuess: boolean;
   maxColumns: number;
+  crazyMode: boolean;
   wrongGuessDisplayMs: number;
   iconsToChooseFrom: Array<CardIconName>;
   initialGameState: GuessingGameSessionState;

@@ -9,6 +9,7 @@ export const DEFAULT_GUESSING_GAME_CONFIG: GuessingGameConfig = {
   cardsAmount: 16,
   autoSolveLastGuess: true,
   maxColumns: 4,
+  crazyMode: false,
   wrongGuessDisplayMs: 700,
   iconsToChooseFrom: Object.values(CardIconName),
   initialGameState: GuessingGameSessionState.NOT_STARTED,
