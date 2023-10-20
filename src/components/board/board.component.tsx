@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
-import {
-  BOARD_BG,
-  BOARD_FALLBACK_BG,
-  BOARD_GAP,
-  BOARD_PADDING,
-} from './board.constants';
+import { BOARD_COLORS, BOARD_GAP, BOARD_PADDING } from './board.constants';
 import { IBoard } from './board.types';
 import { getBoardMaxWidth } from './board.utils';
 
@@ -22,7 +17,7 @@ const Layout = styled.div<Pick<IBoard, 'maxColumns'>>`
   padding: ${BOARD_PADDING}px;
   border-radius: 8px;
 
-  background: ${BOARD_FALLBACK_BG};
-  background: ${BOARD_BG};
-  outline: 2px solid #ffffff22;
+  background: ${BOARD_COLORS.BG};
+  background: linear-gradient(to right, ${BOARD_COLORS.BG_GRADIENT.join(', ')});
+  outline: 2px solid ${BOARD_COLORS.BORDER};
 `;
