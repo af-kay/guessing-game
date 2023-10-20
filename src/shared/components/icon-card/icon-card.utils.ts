@@ -21,7 +21,7 @@ import {
 
 import { CardIconName } from './icon-card.types';
 
-export const createFaIcon = (icon: CardIconName): IconType => {
+export const createIcon = (icon: CardIconName): IconType => {
   const converter: Record<CardIconName, IconType> = {
     [CardIconName.FB]: FaFacebook,
     [CardIconName.DOCKER]: FaDocker,
@@ -45,4 +45,3 @@ export const createFaIcon = (icon: CardIconName): IconType => {
 };
 
 export const createClosedIcon = (): IconType => FaQuestion;
-

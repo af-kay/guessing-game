@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { IIconCard } from './icon-card.types';
-import { createClosedIcon, createFaIcon } from './icon-card.utils';
+import { createClosedIcon, createIcon } from './icon-card.utils';
 import {
   ICON_CARD_BORDER_RADIUS,
   ICON_CARD_CLOSED_ICON_SIZE,
@@ -10,7 +10,7 @@ import {
 } from './icon-card.constants';
 
 export const IconCard: React.FC<IIconCard> = ({
-  iconName: icon,
+  iconName,
   isClosed,
   animation,
   bgColor,
@@ -18,7 +18,7 @@ export const IconCard: React.FC<IIconCard> = ({
   iconColor,
   onClick,
 }) => {
-  const FaIcon = createFaIcon(icon);
+  const Icon = createIcon(iconName);
   const ClosedIcon = createClosedIcon();
 
   return (
@@ -26,7 +26,7 @@ export const IconCard: React.FC<IIconCard> = ({
       <CardInner isClosed={isClosed}>
         <CardFrontSide bgColor={bgColor} highlightColor={highlightColor}>
           <AnimationWrapper animation={animation}>
-            <FaIcon size={ICON_CARD_ICON_SIZE} color={iconColor} />
+            <Icon size={ICON_CARD_ICON_SIZE} color={iconColor} />
           </AnimationWrapper>
         </CardFrontSide>
         <CardBackSide bgColor={bgColor} highlightColor={highlightColor}>
