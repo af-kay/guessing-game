@@ -15,6 +15,7 @@ export const createNotifier = ({
   const Icon = RequestedIcon ?? DEFAULT_NOTIFY_ICONS[level];
 
   const notify = (message: string) => {
+    console.log(message, isDevProtectedLevel, IS_DEV_MODE);
     if (isDevProtectedLevel && !IS_DEV_MODE) {
       return;
     }

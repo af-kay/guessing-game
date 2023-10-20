@@ -15,14 +15,11 @@ import { Confetti } from '$shared/components';
 export const GameScene = () => {
   const {
     state: { isFinished },
-    config: {
-      config: { crazyMode },
-    },
   } = useGuessingGame();
 
   return (
     <>
-      <Layout isCrazyModeEnabled={crazyMode}>
+      <Layout isCrazy={false}>
         <Title>Guessing game</Title>
         <GameBoard />
         <GuessingGameConfigureConfig />
@@ -38,7 +35,7 @@ const Title = styled.h1`
   color: #b993d6;
 `;
 
-const Layout = styled.div<{ isCrazyModeEnabled: boolean }>`
+const Layout = styled.div<{ isCrazy: boolean }>`
   width: 100%;
   height: 100%;
   display: flex;
@@ -47,7 +44,7 @@ const Layout = styled.div<{ isCrazyModeEnabled: boolean }>`
   justify-content: center;
 
   ${p =>
-    p.isCrazyModeEnabled &&
+    p.isCrazy &&
     css`
       animation: crazy 1s ease-in-out infinite;
     `}

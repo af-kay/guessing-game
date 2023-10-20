@@ -13,6 +13,15 @@ export const useGameCards: UseGameCards = generateCardsFn => {
     [gameCards],
   );
 
+  const updateCards = useCallback((updatedCards: GuessCardData[]) => {
+    setGameCards(prev =>
+      prev.map(
+        existingCard =>
+          updatedCards.find(c => c.id === existingCard.id) ?? existingCard,
+      ),
+    );
+  }, []);
+
   const updateCard = useCallback((updatedCard: GuessCardData) => {
     setGameCards(prev =>
       prev.map(existingCard =>
@@ -60,6 +69,7 @@ export const useGameCards: UseGameCards = generateCardsFn => {
     pickedCards,
     nonGuessedCards,
     updateCard,
+    updateCards,
     reset,
   };
 };

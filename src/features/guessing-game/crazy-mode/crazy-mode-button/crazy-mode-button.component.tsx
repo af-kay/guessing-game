@@ -9,7 +9,7 @@ export const CrazyModeButton = devProtectedFC(() => {
 
   return (
     <Button onClick={toggle}>
-      {isEnabled ? '(CRAZY MODE) Please turn it off!' : 'Enable crazy mode'}
+      {isEnabled ? 'Disable crazy mode' : 'Enable crazy mode'}
     </Button>
   );
 });
