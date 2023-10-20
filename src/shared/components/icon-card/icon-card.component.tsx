@@ -21,12 +21,12 @@ export const IconCard: React.FC<IIconCard> = ({
       <CardInner isClosed={isClosed}>
         <CardFrontSide bgColor={bgColor} highlightColor={highlightColor}>
           <AnimationWrapper animation={animation}>
-            <FaIcon size={70} color={iconColor} />
+            <FaIcon size={64} color={iconColor} />
           </AnimationWrapper>
         </CardFrontSide>
         <CardBackSide bgColor={bgColor} highlightColor={highlightColor}>
           <AnimationWrapper animation={animation}>
-            <ClosedIcon size={70} color={iconColor} />
+            <ClosedIcon size={64} color={iconColor} />
           </AnimationWrapper>
         </CardBackSide>
       </CardInner>
