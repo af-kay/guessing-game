@@ -6,6 +6,7 @@ export type GuessingGameConfig = {
   cardsForSingleGuess: number;
   cardsAmount: number;
   autoSolveLastGuess: boolean;
+  maxColumns: number;
   wrongGuessDisplayMs: number;
   iconsToChooseFrom: Array<CardIconName>;
   initialGameState: GuessingGameSessionState;
@@ -14,4 +15,7 @@ export type GuessingGameConfig = {
   displayDebugStats: boolean;
 };
 
-export type UseGameConfig = () => GuessingGameConfig;
+export type UseGameConfig = () => {
+  updateConfigWith: (updates: Partial<GuessingGameConfig>) => void;
+  config: GuessingGameConfig;
+};

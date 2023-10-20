@@ -1,6 +1,7 @@
 import { CardIconName } from '../../shared/components/icon-card';
 
 import { UseGameCards } from './game-cards';
+import { UseGameConfig } from './game-config';
 import { UseGameState } from './game-state';
 
 export enum GuessCardState {
@@ -20,4 +21,5 @@ export type GuessCardData = {
 export type GuessingGameSession = {
   state: ReturnType<UseGameState>;
   cards: ReturnType<UseGameCards>;
+  config: ReturnType<UseGameConfig>;
 };

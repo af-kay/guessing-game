@@ -7,10 +7,11 @@ import { Board } from '$shared/components/board';
 export const GameBoard = () => {
   const {
     cards: { allCards },
+    config: { config },
   } = useGuessingGame();
 
   return (
-    <Board maxColumns={4}>
+    <Board maxColumns={config.maxColumns}>
       {allCards.map(card => (
         <GuessCard key={card.id} id={card.id} />
       ))}
