@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-import { FaCog } from 'react-icons/fa';
 
 import { useGuessingGame } from '../guessing-game.hook';
-import { DEFAULT_GUESSING_GAME_CONFIG } from '../game-config';
+import {
+  DEFAULT_GUESSING_GAME_CONFIG,
+  GuessingGameConfigureConfig,
+} from '../game-config';
 
 import { DebugInfo } from './debug-info';
 import { GameBoard } from './game-board';
@@ -18,10 +20,8 @@ export const GameScene = () => {
     <>
       <Layout>
         <Title>Guessing game</Title>
-        <p>
-          Configure <FaCog />{' '}
-        </p>
         <GameBoard />
+        <GuessingGameConfigureConfig />
       </Layout>
       {DEFAULT_GUESSING_GAME_CONFIG.displayDebugStats && <DebugInfo />}
       {isFinished && <Confetti />}
