@@ -17,9 +17,9 @@ export const getCardColorFromState = (state: GuessCardState): string => {
 export const getHighlightColorFromState = (state: GuessCardState) => {
   const converter: Record<GuessCardState, IIconCard['highlightColor']> = {
     [GuessCardState.CLOSED]: undefined,
-    [GuessCardState.PICKED]: '#ffffff44',
-    [GuessCardState.GUESSED]: undefined,
-    [GuessCardState.GUESSED_WRONG]: undefined,
+    [GuessCardState.PICKED]: '#ffffff88',
+    [GuessCardState.GUESSED]: '#00ff0055',
+    [GuessCardState.GUESSED_WRONG]: '#ff000055',
     [GuessCardState.SOLVED]: undefined,
   };
 
