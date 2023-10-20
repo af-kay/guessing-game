@@ -19,7 +19,6 @@
     "noFallthroughCasesInSwitch": true,
     "types": ["vitest/globals"],
     "paths": {
-      "$components/*": ["src/shared/components/*"],
       "$features/*": ["./src/features/*"],
       "$shared/*": ["./src/shared/*"]
     }
