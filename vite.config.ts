@@ -7,7 +7,7 @@ const isProdMode = (mode: ConfigEnv['mode']) => mode === 'production';
 const isDevMode = (mode: ConfigEnv['mode']) => mode === 'development';
 
 const getAppBase = (mode: ConfigEnv['mode']) =>
-  isProdMode(mode) ? '/guessing-game' : '';
+  isProdMode(mode) ? '/guessing-game/' : '';
 
 const makeAliases = (): AliasOptions => {
   const prefix = '$';
@@ -30,6 +30,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   },
   define: {
     IS_DEV_MODE: JSON.stringify(isDevMode(mode)),
+    APP_BASE: JSON.stringify(getAppBase(mode)),
   },
   server: {
     port: 3000,

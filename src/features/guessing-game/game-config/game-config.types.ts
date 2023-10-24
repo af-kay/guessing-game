@@ -20,3 +20,7 @@ export type UseGameConfig = () => {
   updateConfigWith: (updates: Partial<GuessingGameConfig>) => void;
   config: GuessingGameConfig;
 };
+
+export type IGameConfigMenu = {
+  additionalButtons?: React.ReactElement[];
+};
