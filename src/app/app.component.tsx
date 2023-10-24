@@ -9,6 +9,7 @@ import {
   ParticlesBgRandomizeButton,
 } from '$features/particles-bg';
 
+// FIXME: laziness does not work because of named and default exports mixing
 const LazyParticlesBg = React.lazy(() => import('$features/particles-bg'));
 
 const queryClient = new QueryClient({
