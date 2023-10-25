@@ -12,11 +12,14 @@ export const ButtonLayout = styled.button<IButtonLayout>`
   cursor: pointer;
 
   border-radius: 8px;
-  border: 1px dashed #ffffff33;
+  border: 1px solid #ffffff22;
+  font-size: 1.1rem;
 
   &:hover {
     filter: brightness(0.9);
   }
+
+  backdrop-filter: blur(8px);
 
   ${p =>
     p.isLoading &&
