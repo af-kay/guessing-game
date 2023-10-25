@@ -16,12 +16,19 @@ export const useParticleBgVariant: UseLoadParticleBgVariant = variant => {
       `./assets/ts-particles/${variant}`,
     ).then(res => res.json());
 
+    const interactivity = PARTICLES_BG_CONFIG.enableInteractivity
+      ? loadedOptions?.interactivity
+      : undefined;
+
     toast(`Background "${variant}" installed!`, {
       duration: 1200,
       id: 'particles-bg-install',
     });
 
-    return loadedOptions;
+    return {
+      ...loadedOptions,
+      interactivity,
+    };
   }, [variant]);
 
   return useQuery<undefined | ParticlesBgOptions>({
