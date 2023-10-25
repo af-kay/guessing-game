@@ -6,6 +6,7 @@ import { useParticlesBgContext } from '../particles-bg.context';
 import { PARTICLES_BG_LS_KEY } from '../particles-bg.constants';
 import { ParticlesVariant } from '../variants/variants.types';
 import { notifyBg } from '../variants/variants.utils';
+import { PARTICLES_BG_CONFIG } from '../particles-bg.config';
 
 import { IParticlesBgSwitchButton } from './particles-bg-switch-button.types';
 import { getBgSwitchFunction } from './particles-bg-switch-button.utils';
@@ -14,7 +15,7 @@ import { ButtonLayout } from '$shared/components';
 import { useLocalStorage } from '$shared/hooks';
 
 export const ParticlesBgSwitchButton: React.FC<IParticlesBgSwitchButton> = ({
-  strategy = 'next',
+  strategy = PARTICLES_BG_CONFIG.switchButtonStrategy,
 }) => {
   const { updateLSValue } =
     useLocalStorage<ParticlesVariant>(PARTICLES_BG_LS_KEY);
