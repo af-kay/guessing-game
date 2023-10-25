@@ -6,7 +6,7 @@ import { GuessingGame } from '../features/guessing-game';
 
 import {
   ParticlesBgContextProvider,
-  ParticlesBgRandomizeButton,
+  ParticlesBgSwitchButton,
 } from '$features/particles-bg';
 
 // FIXME: laziness does not work because of named and default exports mixing
@@ -20,7 +20,7 @@ export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ParticlesBgContextProvider>
-        <GuessingGame additionalButtons={[<ParticlesBgRandomizeButton />]} />
+        <GuessingGame additionalButtons={[<ParticlesBgSwitchButton />]} />
 
         <Toaster position="top-center" reverseOrder />
         <LazyParticlesBg />

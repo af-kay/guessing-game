@@ -1,5 +1,4 @@
 import { useCallback, useMemo } from 'react';
-import toast from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 
 import { PARTICLES_BG_CONFIG } from '../particles-bg.config';
@@ -9,6 +8,7 @@ import {
   UseLoadParticleBgVariant,
   UseParticleBgOptions,
 } from './variants.types';
+import { notifyBg } from './variants.utils';
 
 export const useParticleBgVariant: UseLoadParticleBgVariant = variant => {
   const loadParticles = useCallback(async () => {
@@ -20,10 +20,7 @@ export const useParticleBgVariant: UseLoadParticleBgVariant = variant => {
       ? loadedOptions?.interactivity
       : undefined;
 
-    toast(`Background "${variant}" installed!`, {
-      duration: 1200,
-      id: 'particles-bg-install',
-    });
+    notifyBg(`Background "${variant}" installed!`);
 
     return {
       ...loadedOptions,
@@ -36,9 +33,7 @@ export const useParticleBgVariant: UseLoadParticleBgVariant = variant => {
     queryFn: loadParticles,
     retry: false,
     throwOnError: error => {
-      toast(`Error installing background "${variant}"!\n(${error.message})`, {
-        id: 'particles-bg-install',
-      });
+      notifyBg(`Error installing background "${variant}"!\n(${error.message})`);
 
       return false;
     },
