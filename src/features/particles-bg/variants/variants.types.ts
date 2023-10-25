@@ -8,6 +8,8 @@ export enum ParticlesVariant {
   NYAN_CAT = 'nyan-cat.json',
   AMOGUS = 'amogus.json',
   SPARKLES = 'sparkles.json',
+  NASA = 'nasa.json',
+  COLLISION = 'collision.json',
 }
 
 export type ParticlesBgOptions = ISourceOptions;

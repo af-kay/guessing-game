@@ -19,7 +19,7 @@ export const ButtonLayout = styled.button<IButtonLayout>`
     filter: brightness(0.9);
   }
 
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px) brightness(.95);
 
   ${p =>
     p.isLoading &&
