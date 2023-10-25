@@ -7,6 +7,7 @@ export enum ParticlesVariant {
   SNOW = 'snow.json',
   NYAN_CAT = 'nyan-cat.json',
   AMOGUS = 'amogus.json',
+  SPARKLES = 'sparkles.json',
 }
 
 export type ParticlesBgOptions = ISourceOptions;
