@@ -29,12 +29,10 @@ export const GameScene: React.FC<IGameScene> = ({ additionalButtons }) => {
 };
 
 const Title = styled.h1`
-  color: white;
-  font-weight: normal;
-  letter-spacing: 2px;
-  backdrop-filter: blur(4px);
-  font-size: 2.2rem;
-  line-height: 1em;
+  color: #d9d9d9;
+  text-shadow:
+    -1px -1px 1px rgba(255, 255, 255, 0.1),
+    1px 1px 1px rgba(0, 0, 0, 0.5);
 `;
 
 const Layout = styled.div`
