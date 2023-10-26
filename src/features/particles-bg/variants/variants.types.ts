@@ -15,8 +15,9 @@ export enum ParticlesVariant {
 
 export type ParticlesBgOptions = ISourceOptions;
 
-export type UseLoadParticleBgVariant = (
-  variant: ParticlesVariant,
-) => UseQueryResult<undefined | ParticlesBgOptions>;
+export type UseLoadParticleBgVariant = (params: {
+  variant: undefined | ParticlesVariant;
+  notify?: boolean;
+}) => UseQueryResult<undefined | ParticlesBgOptions>;
 
 export type UseParticleBgOptions = () => OptionType<ParticlesVariant>[];

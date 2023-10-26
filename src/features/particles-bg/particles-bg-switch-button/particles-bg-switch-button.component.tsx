@@ -1,12 +1,12 @@
-import { useCallback, useMemo } from 'react';
-import { FaBrush } from 'react-icons/fa6';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { FaBrush, FaDownload } from 'react-icons/fa6';
 
 import { useParticleBgOptions, useParticleBgVariant } from '../variants';
-import { useParticlesBgContext } from '../particles-bg.context';
+import { useParticlesBgContext } from '../particles-bg.context.hook';
 import { PARTICLES_BG_LS_KEY } from '../particles-bg.constants';
 import { ParticlesVariant } from '../variants/variants.types';
-import { notifyBg } from '../variants/variants.utils';
 import { PARTICLES_BG_CONFIG } from '../particles-bg.config';
+import { useParticleBgVariantQuery } from '../variants/variants.hook';
 
 import { IParticlesBgSwitchButton } from './particles-bg-switch-button.types';
 import { getBgSwitchFunction } from './particles-bg-switch-button.utils';
@@ -21,31 +21,45 @@ export const ParticlesBgSwitchButton: React.FC<IParticlesBgSwitchButton> = ({
     useLocalStorage<ParticlesVariant>(PARTICLES_BG_LS_KEY);
   const options = useParticleBgOptions();
   const { variant, setVariant } = useParticlesBgContext();
-  const { isLoading } = useParticleBgVariant(variant);
+  const { isLoading } = useParticleBgVariant({ variant });
+
+  const [nextVariant, setNextVariant] = useState<ParticlesVariant>();
+  const { isLoading: isNextVariantLoading, data: nextVariantData } =
+    useParticleBgVariantQuery({ variant: nextVariant, notify: false });
 
   const getNextVariant = useMemo(
     () => getBgSwitchFunction(strategy),
     [strategy],
   );
 
-  const setNextVariant = useCallback(() => {
+  const prepareForNextVariant = useCallback(() => {
     const nextVariant = getNextVariant(
       variant,
       options.map(o => o.value),
     );
 
     if (nextVariant) {
-      notifyBg(`Installing background "${nextVariant}"...`, {
-        duration: 5000,
-      });
-      setVariant(nextVariant);
+      setNextVariant(nextVariant);
       updateLSValue(nextVariant);
     }
-  }, [getNextVariant, options, setVariant, updateLSValue, variant]);
+  }, [getNextVariant, options, updateLSValue, variant]);
+
+  useEffect(() => {
+    if (nextVariantData && !isNextVariantLoading && nextVariant) {
+      setVariant(nextVariant);
+      setNextVariant(undefined);
+    }
+  }, [isNextVariantLoading, nextVariant, nextVariantData, setVariant]);
 
   return (
-    <ButtonLayout onClick={setNextVariant} isLoading={isLoading}>
-      Background: {variant} <FaBrush />
+    <ButtonLayout
+      onClick={prepareForNextVariant}
+      isLoading={isLoading || isNextVariantLoading}
+    >
+      {isLoading || isNextVariantLoading
+        ? `Loading ${nextVariant}...`
+        : `Background: ${variant}`}{' '}
+      {isLoading || isNextVariantLoading ? <FaDownload /> : <FaBrush />}
     </ButtonLayout>
   );
 };

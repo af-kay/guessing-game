@@ -10,7 +10,10 @@ import {
 } from './variants.types';
 import { notifyBg } from './variants.utils';
 
-export const useParticleBgVariant: UseLoadParticleBgVariant = variant => {
+export const useParticleBgVariantQuery: UseLoadParticleBgVariant = ({
+  variant,
+  notify = true,
+}) => {
   const loadParticles = useCallback(async () => {
     const loadedOptions: undefined | ParticlesBgOptions = await fetch(
       `./assets/ts-particles/${variant}`,
@@ -20,20 +23,27 @@ export const useParticleBgVariant: UseLoadParticleBgVariant = variant => {
       ? loadedOptions?.interactivity
       : undefined;
 
-    notifyBg(`Background "${variant}" installed!`);
+    if (notify) {
+      notifyBg(`Background "${variant}" installed!`);
+    }
 
     return {
       ...loadedOptions,
       interactivity,
     };
-  }, [variant]);
+  }, [notify, variant]);
 
   return useQuery<undefined | ParticlesBgOptions>({
     queryKey: ['BG_VARIANT', variant],
+    enabled: Boolean(variant),
     queryFn: loadParticles,
     retry: false,
     throwOnError: error => {
-      notifyBg(`Error installing background "${variant}"!\n(${error.message})`);
+      if (notify) {
+        notifyBg(
+          `Error installing background "${variant}"!\n(${error.message})`,
+        );
+      }
 
       return false;
     },

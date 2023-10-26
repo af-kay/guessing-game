@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 
 import { ParticlesVariant } from './variants/variants.types';
 import { PARTICLES_BG_CONFIG } from './particles-bg.config';
@@ -11,7 +11,9 @@ export type ParticlesBgContextType = {
   setVariant: (variant: ParticlesVariant) => void;
 };
 
-const ParticlesBgContext = React.createContext({} as ParticlesBgContextType);
+export const ParticlesBgContext = React.createContext(
+  {} as ParticlesBgContextType,
+);
 
 export const ParticlesBgContextProvider: React.FC<React.PropsWithChildren> = ({
   children,
@@ -23,10 +25,10 @@ export const ParticlesBgContextProvider: React.FC<React.PropsWithChildren> = ({
   );
 
   return (
-    <ParticlesBgContext.Provider value={{ variant, setVariant }}>
+    <ParticlesBgContext.Provider
+      value={{ variant, setVariant }}
+    >
       {children}
     </ParticlesBgContext.Provider>
   );
 };
-
-export const useParticlesBgContext = () => useContext(ParticlesBgContext);

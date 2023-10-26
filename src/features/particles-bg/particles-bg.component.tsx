@@ -4,12 +4,12 @@ import type { Engine } from 'tsparticles-engine';
 import { loadSlim } from 'tsparticles-slim';
 
 import { useParticleBgVariant } from './variants';
-import { useParticlesBgContext } from './particles-bg.context';
+import { useParticlesBgContext } from './particles-bg.context.hook';
 
 export const ParticlesBg = React.memo(() => {
   const { variant } = useParticlesBgContext();
 
-  const { data } = useParticleBgVariant(variant);
+  const { data } = useParticleBgVariant({ variant });
 
   const particlesInit = useCallback(async (engine: Engine) => {
     console.log(engine);
