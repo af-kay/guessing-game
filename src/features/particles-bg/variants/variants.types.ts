@@ -10,6 +10,7 @@ export enum ParticlesVariant {
   SPARKLES = 'sparkles.json',
   NASA = 'nasa.json',
   COLLISION = 'collision.json',
+  TRIANGLES = 'triangles.json',
 }
 
 export type ParticlesBgOptions = ISourceOptions;
