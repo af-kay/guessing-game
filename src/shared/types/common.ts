@@ -9,4 +9,7 @@ export type Theme = {
   BOARD: {
     BG?: string | [string, string];
   };
+  ICON_CARD: {
+    CLOSED?: string;
+  };
 };
