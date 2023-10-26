@@ -4,10 +4,7 @@ import React from 'react';
 
 import { GuessingGame } from '../features/guessing-game';
 
-import {
-  ThemeContextProvider,
-  ParticlesBgSwitchButton,
-} from '$features/theme';
+import { ThemeContextProvider, ThemeSwitchButton } from '$features/theme';
 
 // FIXME: laziness does not work because of named and default exports mixing
 const LazyParticlesBg = React.lazy(() => import('$features/theme'));
@@ -20,7 +17,7 @@ export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeContextProvider>
-        <GuessingGame additionalButtons={[<ParticlesBgSwitchButton />]} />
+        <GuessingGame additionalButtons={[<ThemeSwitchButton />]} />
 
         <Toaster position="top-center" reverseOrder />
         <LazyParticlesBg />

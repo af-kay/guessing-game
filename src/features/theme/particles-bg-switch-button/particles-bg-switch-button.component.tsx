@@ -14,7 +14,7 @@ import { getBgSwitchFunction } from './particles-bg-switch-button.utils';
 import { ButtonLayout } from '$shared/components';
 import { useLocalStorage } from '$shared/hooks';
 
-export const ParticlesBgSwitchButton: React.FC<IParticlesBgSwitchButton> = ({
+export const ThemeSwitchButton: React.FC<IParticlesBgSwitchButton> = ({
   strategy = THEME_BG_CONFIG.switchButtonStrategy,
 }) => {
   const { updateLSValue } =
@@ -58,7 +58,7 @@ export const ParticlesBgSwitchButton: React.FC<IParticlesBgSwitchButton> = ({
     >
       {isLoading || isNextVariantLoading
         ? `Loading ${nextVariant || variant}...`
-        : `Background: ${variant}`}{' '}
+        : `Theme: ${variant}`}{' '}
       {isLoading || isNextVariantLoading ? <FaDownload /> : <FaBrush />}
     </ButtonLayout>
   );
