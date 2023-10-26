@@ -38,6 +38,7 @@ export const useParticleBgVariantQuery: UseLoadParticleBgVariant = ({
     enabled: Boolean(variant),
     queryFn: loadParticles,
     retry: false,
+    refetchOnMount: false,
     throwOnError: error => {
       if (notify) {
         notifyBg(
