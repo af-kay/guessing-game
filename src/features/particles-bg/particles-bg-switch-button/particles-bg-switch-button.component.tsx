@@ -57,7 +57,7 @@ export const ParticlesBgSwitchButton: React.FC<IParticlesBgSwitchButton> = ({
       isLoading={isLoading || isNextVariantLoading}
     >
       {isLoading || isNextVariantLoading
-        ? `Loading ${nextVariant}...`
+        ? `Loading ${nextVariant || variant}...`
         : `Background: ${variant}`}{' '}
       {isLoading || isNextVariantLoading ? <FaDownload /> : <FaBrush />}
     </ButtonLayout>
