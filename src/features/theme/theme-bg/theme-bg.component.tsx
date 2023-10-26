@@ -3,11 +3,11 @@ import Particles from 'react-tsparticles';
 import type { Engine } from 'tsparticles-engine';
 import { loadSlim } from 'tsparticles-slim';
 
-import { useParticleBgVariant } from './variants';
-import { useParticlesBgContext } from './particles-bg.context.hook';
+import { useParticleBgVariant } from '../variants';
+import { useThemeContext } from '../particles-bg.context.hook';
 
-export const ParticlesBg = React.memo(() => {
-  const { variant } = useParticlesBgContext();
+export const ThemeBg = React.memo(() => {
+  const { variant } = useThemeContext();
 
   const { data } = useParticleBgVariant({ variant });
 

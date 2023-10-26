@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-import { PARTICLES_BG_CONFIG } from '../particles-bg.config';
+import { THEME_BG_CONFIG } from '../particles-bg.config';
 
 import {
   ParticlesBgOptions,
@@ -19,7 +19,7 @@ export const useParticleBgVariantQuery: UseLoadParticleBgVariant = ({
       `./assets/ts-particles/${variant}`,
     ).then(res => res.json());
 
-    const interactivity = PARTICLES_BG_CONFIG.enableInteractivity
+    const interactivity = THEME_BG_CONFIG.enableInteractivity
       ? loadedOptions?.interactivity
       : undefined;
 
@@ -54,7 +54,7 @@ export const useParticleBgVariantQuery: UseLoadParticleBgVariant = ({
 export const useParticleBgOptions: UseParticleBgOptions = () => {
   return useMemo(
     () =>
-      PARTICLES_BG_CONFIG.allowedOptions.map(option => ({
+      THEME_BG_CONFIG.allowedOptions.map(option => ({
         value: option,
         label: String(option),
       })),

@@ -5,12 +5,12 @@ import React from 'react';
 import { GuessingGame } from '../features/guessing-game';
 
 import {
-  ParticlesBgContextProvider,
+  ThemeContextProvider,
   ParticlesBgSwitchButton,
-} from '$features/particles-bg';
+} from '$features/theme';
 
 // FIXME: laziness does not work because of named and default exports mixing
-const LazyParticlesBg = React.lazy(() => import('$features/particles-bg'));
+const LazyParticlesBg = React.lazy(() => import('$features/theme'));
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnMount: false } },
@@ -19,12 +19,12 @@ const queryClient = new QueryClient({
 export function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ParticlesBgContextProvider>
+      <ThemeContextProvider>
         <GuessingGame additionalButtons={[<ParticlesBgSwitchButton />]} />
 
         <Toaster position="top-center" reverseOrder />
         <LazyParticlesBg />
-      </ParticlesBgContextProvider>
+      </ThemeContextProvider>
     </QueryClientProvider>
   );
 }

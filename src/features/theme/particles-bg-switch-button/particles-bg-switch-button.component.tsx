@@ -2,10 +2,10 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { FaBrush, FaDownload } from 'react-icons/fa6';
 
 import { useParticleBgOptions, useParticleBgVariant } from '../variants';
-import { useParticlesBgContext } from '../particles-bg.context.hook';
+import { useThemeContext } from '../particles-bg.context.hook';
 import { PARTICLES_BG_LS_KEY } from '../particles-bg.constants';
 import { ParticlesVariant } from '../variants/variants.types';
-import { PARTICLES_BG_CONFIG } from '../particles-bg.config';
+import { THEME_BG_CONFIG } from '../particles-bg.config';
 import { useParticleBgVariantQuery } from '../variants/variants.hook';
 
 import { IParticlesBgSwitchButton } from './particles-bg-switch-button.types';
@@ -15,12 +15,12 @@ import { ButtonLayout } from '$shared/components';
 import { useLocalStorage } from '$shared/hooks';
 
 export const ParticlesBgSwitchButton: React.FC<IParticlesBgSwitchButton> = ({
-  strategy = PARTICLES_BG_CONFIG.switchButtonStrategy,
+  strategy = THEME_BG_CONFIG.switchButtonStrategy,
 }) => {
   const { updateLSValue } =
     useLocalStorage<ParticlesVariant>(PARTICLES_BG_LS_KEY);
   const options = useParticleBgOptions();
-  const { variant, setVariant } = useParticlesBgContext();
+  const { variant, setVariant } = useThemeContext();
   const { isLoading } = useParticleBgVariant({ variant });
 
   const [nextVariant, setNextVariant] = useState<ParticlesVariant>();

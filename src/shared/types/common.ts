@@ -4,3 +4,9 @@ export type OptionType<ValueType = string> = {
   label: string;
   value: ValueType;
 };
+
+export type Theme = {
+  BOARD: {
+    BG?: string | [string, string];
+  };
+};
