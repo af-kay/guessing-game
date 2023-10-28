@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useGameLogic } from './game-logic';
-import { GuessingGameContextProvider } from './guessing-game.context';
+import { GuessingGameContextProvider } from './guessing-game.context.provider';
 import { GameScene } from './game-scene';
 import { IGuessingGame } from './guessing-game.types';
 

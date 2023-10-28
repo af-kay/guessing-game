@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useGuessingGame } from '../guessing-game.hook';
+import { useGuessingGame } from '../guessing-game.provider.hook';
 import { DEFAULT_GUESSING_GAME_CONFIG } from '../game-config';
 
 import { GameEventCallbacks, UseGameEvents } from './game-events.types';

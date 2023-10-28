@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 
 import { DEFAULT_GUESSING_GAME_CONFIG } from '../game-config';
-import { useGuessingGame } from '../guessing-game.hook';
+import { useGuessingGame } from '../guessing-game.provider.hook';
 import { GuessCardState } from '../guessing-game.types';
 import { useGameEvents } from '../game-events';
 
 import { getNextCardStateByGuess } from './game-logic.utils';
+import toast from 'react-hot-toast';
 
 export const useGameLogic = () => {
   useGuessLogic__SideEffect();
@@ -13,11 +14,32 @@ export const useGameLogic = () => {
   useGameAutoStart__SideEffect();
   useFinishGameWhenNoCardsLeft__SideEffect();
   useGenerateNewCardsAndAutoStartOnFinish__SideEffect();
+  useRestartGameLogic__SideEffect();
+};
+
+const useRestartGameLogic__SideEffect = () => {
+  const {
+    state: { isAboutToRestart, startGame },
+    cards: { reinitialize },
+  } = useGuessingGame();
+
+  const RESTART_DELAY = 1000;
+
+  useEffect(() => {
+    if (isAboutToRestart && startGame) {
+      setTimeout(() => {
+        startGame();
+        reinitialize();
+
+        toast('Game restarted!');
+      }, RESTART_DELAY);
+    }
+  }, [isAboutToRestart, reinitialize, startGame]);
 };
 
 const useGenerateNewCardsAndAutoStartOnFinish__SideEffect = () => {
   const {
-    cards: { reset },
+    cards: { reinitialize },
     state: { startGame },
   } = useGuessingGame();
 
@@ -27,7 +49,7 @@ const useGenerateNewCardsAndAutoStartOnFinish__SideEffect = () => {
         setTimeout(() => {
           if (startGame) {
             startGame();
-            reset();
+            reinitialize();
           }
         }, DEFAULT_GUESSING_GAME_CONFIG.autoRestartDelay);
       }

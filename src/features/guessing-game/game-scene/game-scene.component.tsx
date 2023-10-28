@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { useState } from 'react';
 
-import { useGuessingGame } from '../guessing-game.hook';
+import { useGuessingGame } from '../guessing-game.provider.hook';
 import { GameConfigMenu } from '../game-config/game-config.component';
 import { DEFAULT_GUESSING_GAME_CONFIG } from '../game-config';
 
@@ -9,6 +9,7 @@ import { DebugInfo } from './debug-info';
 import { GameBoard } from './game-board';
 import { IGameScene } from './game-scene.types';
 import { HideGameButton } from './hide-game-button';
+import { RestartGameButton } from './restart-game-button';
 
 import { Confetti } from '$shared/components';
 
@@ -27,6 +28,7 @@ export const GameScene: React.FC<IGameScene> = ({ additionalButtons }) => {
       />
       <Layout isHidden={isGameHidden}>
         <Title>Guessing game</Title>
+        <RestartGameButton />
         <GameBoard />
         <GameConfigMenu additionalButtons={additionalButtons} />
       </Layout>
@@ -54,7 +56,7 @@ const Layout = styled.div<{ isHidden: boolean }>`
   position: relative;
   z-index: 2000;
 
-  transition: opacity .5s ease-in;
+  transition: opacity 0.5s ease-in;
 
   ${p =>
     p.isHidden &&

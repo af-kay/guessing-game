@@ -4,6 +4,7 @@ import { GuessingGameSessionState, UseGameState } from './game-state.types';
 import {
   canFinishGame,
   canPauseGame,
+  canPrepareGameToRestart,
   canResumeGame,
   canStartGame,
 } from './game-state.utils';
@@ -29,14 +30,20 @@ export const useGameState: UseGameState = (
     ? () => setGameState(GuessingGameSessionState.DONE)
     : null;
 
+  const prepareToRestart = canPrepareGameToRestart(gameState)
+    ? () => setGameState(GuessingGameSessionState.ABOUT_TO_RESTART)
+    : null;
+
   return {
     isIdle: gameState === GuessingGameSessionState.NOT_STARTED,
     isRunning: gameState === GuessingGameSessionState.IN_PROGRESS,
     isPaused: gameState === GuessingGameSessionState.PAUSED,
     isFinished: gameState === GuessingGameSessionState.DONE,
+    isAboutToRestart: gameState === GuessingGameSessionState.ABOUT_TO_RESTART,
     startGame,
     resumeGame,
     pauseGame,
     finishGame,
+    prepareToRestart,
   };
 };

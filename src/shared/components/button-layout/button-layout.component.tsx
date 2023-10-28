@@ -8,6 +8,7 @@ export const ButtonLayout = styled.button<IButtonLayout>`
   padding: 8px 32px;
   align-items: center;
   background: transparent;
+  user-select: none;
 
   cursor: pointer;
 
@@ -20,6 +21,13 @@ export const ButtonLayout = styled.button<IButtonLayout>`
   }
 
   backdrop-filter: blur(8px) brightness(0.95);
+
+  ${p =>
+    p.isEnabled === false &&
+    css`
+      pointer-events: none;
+      filter: brightness(0.8);
+    `}
 
   ${p =>
     p.isLoading &&

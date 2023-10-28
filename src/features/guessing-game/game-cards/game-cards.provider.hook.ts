@@ -59,7 +59,7 @@ export const useGameCards: UseGameCards = generateCardsFn => {
     [pickedCards, updateCard, findGameCardById],
   );
 
-  const reset = useCallback(() => {
+  const reinitialize = useCallback(() => {
     setGameCards(generateCardsFn());
   }, [generateCardsFn]);
 
@@ -70,6 +70,6 @@ export const useGameCards: UseGameCards = generateCardsFn => {
     nonGuessedCards,
     updateCard,
     updateCards,
-    reset,
+    reinitialize,
   };
 };

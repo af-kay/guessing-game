@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { IconCardAnimationType } from '../../../../../shared/components/icon-card';
 import { GuessCardData, GuessCardState } from '../../../guessing-game.types';
-import { useGuessingGame } from '../../../guessing-game.hook';
+import { useGuessingGame } from '../../../guessing-game.provider.hook';
 
 const getCardAnimation = (
   state: GuessCardState,

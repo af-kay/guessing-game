@@ -1,4 +1,4 @@
-import { useGuessingGame } from '../../guessing-game.hook';
+import { useGuessingGame } from '../../guessing-game.provider.hook';
 
 import { GuessCard } from './guess-card';
 
