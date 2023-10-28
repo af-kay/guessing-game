@@ -13,6 +13,11 @@ export enum GuessCardState {
   SOLVED = 'solved',
 }
 
+export type GuessingGameFeatureConfig = {
+  restartGameButton: boolean;
+  configureGameButton: boolean;
+};
+
 export type GuessCardData = {
   id: number;
   icon: CardIconName;

@@ -22,3 +22,21 @@ export const devProtectedFC = <
     return null;
   };
 };
+
+export const createFeatureFlagProtectedFC =
+  <
+    PropsType,
+    ConfigType extends Record<string, boolean>,
+    FCType extends React.FC<PropsType> = React.FC<PropsType>,
+  >(
+    config: ConfigType,
+  ) =>
+  (featureFlag: keyof ConfigType, fc: FCType) => {
+    if (config[featureFlag] === true) {
+      return fc;
+    }
+
+    return (_: PropsType) => {
+      return null;
+    };
+  };
