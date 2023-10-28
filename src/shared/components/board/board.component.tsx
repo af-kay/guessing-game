@@ -4,15 +4,15 @@ import { BOARD_COLORS, BOARD_GAP, BOARD_PADDING } from './board.constants';
 import { IBoard } from './board.types';
 import { getBoardMaxWidth } from './board.utils';
 
-export const Board = ({ maxColumns, children, colors }: IBoard) => {
+export const Board = ({ maxColumns, children, colors, isDisabled }: IBoard) => {
   return (
-    <Layout maxColumns={maxColumns} colors={colors}>
+    <Layout maxColumns={maxColumns} colors={colors} isDisabled={isDisabled}>
       {children}
     </Layout>
   );
 };
 
-const Layout = styled.div<Pick<IBoard, 'maxColumns' | 'colors'>>`
+const Layout = styled.div<Pick<IBoard, 'maxColumns' | 'colors' | 'isDisabled'>>`
   display: flex;
   max-width: ${getBoardMaxWidth}px;
   align: auto;
@@ -26,6 +26,11 @@ const Layout = styled.div<Pick<IBoard, 'maxColumns' | 'colors'>>`
 
   background: ${BOARD_COLORS.BG};
   background: linear-gradient(to right, ${BOARD_COLORS.BG_GRADIENT.join(', ')});
+
+  ${p => p.isDisabled && css`
+    pointer-events: none;
+    filter: brightness(.7);
+  `}
 
   ${p =>
     p.colors?.BG &&
