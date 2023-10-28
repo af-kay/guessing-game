@@ -3,18 +3,19 @@ import { TbEye, TbEyeClosed } from 'react-icons/tb';
 
 import { IHideGameButton } from './hide-game-button.types';
 
-export const HideGameButton: React.FC<IHideGameButton> = ({
-  isGameHidden,
-  onToggle,
-}) => {
-  const Icon = isGameHidden ? TbEyeClosed : TbEye;
+import { devProtectedFC } from '$shared/utils';
 
-  return (
-    <Layout title="Hide/Show game" onClick={onToggle}>
-      <Icon />
-    </Layout>
-  );
-};
+export const HideGameButton: React.FC<IHideGameButton> = devProtectedFC(
+  ({ isGameHidden, onToggle }) => {
+    const Icon = isGameHidden ? TbEyeClosed : TbEye;
+
+    return (
+      <Layout title="Hide/Show game" onClick={onToggle}>
+        <Icon />
+      </Layout>
+    );
+  },
+);
 
 const Layout = styled.div`
   position: absolute;
