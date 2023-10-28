@@ -14,9 +14,7 @@ export type ThemeContextType = {
   theme: Theme;
 };
 
-export const ThemeContext = React.createContext(
-  {} as ThemeContextType,
-);
+export const ThemeContext = React.createContext({} as ThemeContextType);
 
 export const ThemeContextProvider: React.FC<React.PropsWithChildren> = ({
   children,

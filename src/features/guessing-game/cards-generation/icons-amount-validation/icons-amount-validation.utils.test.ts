@@ -5,7 +5,6 @@ import { isEnoughIconsForGame } from './icons-amount-validation.utils';
 import { CardIconName } from '$shared/components/icon-card';
 import { PartialBy } from '$shared/types';
 
-
 const makeConfig = ({
   cardsAmount,
   cardsForSingleGuess,
@@ -66,4 +65,4 @@ describe('isEnoughIconsForGame', () => {
       expect(isEnoughIconsForGame(config)).toBe(true);
     });
   });
-})
+});

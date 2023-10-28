@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 import { DEFAULT_GUESSING_GAME_CONFIG } from '../game-config';
 import { useGuessingGame } from '../guessing-game.provider.hook';
@@ -6,7 +7,6 @@ import { GuessCardState } from '../guessing-game.types';
 import { useGameEvents } from '../game-events';
 
 import { getNextCardStateByGuess } from './game-logic.utils';
-import toast from 'react-hot-toast';
 
 export const useGameLogic = () => {
   useGuessLogic__SideEffect();

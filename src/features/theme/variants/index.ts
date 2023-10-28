@@ -1,1 +1,4 @@
-export { useParticleBgOptions, useParticleBgVariantQuery as useParticleBgVariant } from './variants.hook';
+export {
+  useParticleBgOptions,
+  useParticleBgVariantQuery as useParticleBgVariant,
+} from './variants.hook';

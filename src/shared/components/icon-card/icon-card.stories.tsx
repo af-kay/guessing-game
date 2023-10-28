@@ -7,7 +7,6 @@ import { getRandomArrayItem } from '../../utils';
 import { CardIconName, IIconCard } from './icon-card.types';
 import { IconCard } from './icon-card.component';
 
-
 const meta = {
   title: 'components/IconCard',
   component: IconCard,

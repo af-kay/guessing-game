@@ -128,9 +128,9 @@ const CardSide = styled(CardLayout)<
   background: ${p => p.bgColor};
 
   &:hover {
-    filter: brightness(.95);
+    filter: brightness(0.95);
   }
-  transition: filter .2s ease-in-out;
+  transition: filter 0.2s ease-in-out;
 
   ${p =>
     p.highlightColor &&

@@ -5,8 +5,6 @@ import { isValidCardsAmount } from './cards-amount-validation.utils';
 import { CardIconName } from '$shared/components/icon-card';
 import { PartialBy } from '$shared/types';
 
-
-
 const makeConfig = ({
   cardsAmount,
   cardsForSingleGuess,

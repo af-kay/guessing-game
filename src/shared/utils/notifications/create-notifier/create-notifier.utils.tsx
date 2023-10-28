@@ -1,6 +1,9 @@
 import toast from 'react-hot-toast';
 
-import { DEFAULT_NOTIFY_ICONS, DEV_PROTECTED_NOTIFY_LEVELS } from './create-notifier.constants';
+import {
+  DEFAULT_NOTIFY_ICONS,
+  DEV_PROTECTED_NOTIFY_LEVELS,
+} from './create-notifier.constants';
 import {
   ICreateNotifier,
   ICreatePrefixedNotifier,

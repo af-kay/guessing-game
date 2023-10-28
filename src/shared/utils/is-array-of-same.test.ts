@@ -44,6 +44,6 @@ describe('isArrayOfSame', () => {
     ];
 
     expect(isArrayOfSame(array)).toBe(false);
-    expect(isArrayOfSame(array, (item) => item.age)).toBe(true);
+    expect(isArrayOfSame(array, item => item.age)).toBe(true);
   });
 });
